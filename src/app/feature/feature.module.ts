@@ -8,7 +8,9 @@ import { PersonListComponent } from './person/list/person-list.component';
 import { PersonToolbarComponent } from './person/toolbar/person-toolbar.component';
 import { CityComboboxComponent } from './city/city-combobox.component';
 import { AuthoritySearchComponent } from './authority/authority-search/authority-search.component';
-
+import { LocationComponent } from './location/location.component';
+import { ToolbarLocationComponent } from './location/toolbar-location/toolbar-location.component';
+import { LocationListComponent } from './location/location-list/location-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { AuthoritySearchComponent } from './authority/authority-search/authority
     PersonListComponent,
     PersonToolbarComponent,
     CityComboboxComponent,
-    AuthoritySearchComponent
+    AuthoritySearchComponent,
+    LocationComponent,
+    ToolbarLocationComponent,
+    LocationListComponent,
   ],
   imports: [
     CommonModule,
