@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LocationComponent } from '../feature/location/location.component';
 import { PersonFormComponent } from '../feature/person/form/person.form.component';
 import { PersonListComponent } from '../feature/person/list/person-list.component';
+import { TeacherComponent } from '../feature/teacher/teacher.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
 
@@ -14,7 +15,8 @@ const routes: Routes = [
       {path: 'person-form/:id', component:PersonFormComponent},
       {path: 'person-list', component:PersonListComponent},
       {path: 'dashboard', component:DashboardComponent},
-      {path: 'location', component: LocationComponent  }
+      {path: 'location', component: LocationComponent  },
+      {path: 'teacher', component: TeacherComponent}
     ]
   }
 ];
