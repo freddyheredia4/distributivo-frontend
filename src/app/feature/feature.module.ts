@@ -11,6 +11,7 @@ import { AuthoritySearchComponent } from './authority/authority-search/authority
 import { LocationComponent } from './location/location.component';
 import { ToolbarLocationComponent } from './location/toolbar-location/toolbar-location.component';
 import { LocationListComponent } from './location/location-list/location-list.component';
+import { LocationModalComponent } from './location/location-modal/location-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { LocationListComponent } from './location/location-list/location-list.co
     LocationComponent,
     ToolbarLocationComponent,
     LocationListComponent,
+    LocationModalComponent,
   ],
   imports: [
     CommonModule,
