@@ -14,7 +14,8 @@ const routes: Routes = [
       {path: 'person-form/:id', component:PersonFormComponent},
       {path: 'person-list', component:PersonListComponent},
       {path: 'dashboard', component:DashboardComponent},
-      {path: 'location', component: LocationComponent  }
+      {path: 'location', component: LocationComponent  },
+      { path: 'location/:id', component : LocationComponent}
     ]
   }
 ];

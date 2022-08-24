@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import { FeatureRoutingModule } from './feature-routing.module';
 import { PersonFormComponent } from './person/form/person.form.component';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +10,7 @@ import { AuthoritySearchComponent } from './authority/authority-search/authority
 import { LocationComponent } from './location/location.component';
 import { ToolbarLocationComponent } from './location/toolbar-location/toolbar-location.component';
 import { LocationListComponent } from './location/location-list/location-list.component';
-import { LocationModalComponent } from './location/location-modal/location-modal.component';
+import { ModalLocationComponent } from './location/modal-location/modal-location.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,8 @@ import { LocationModalComponent } from './location/location-modal/location-modal
     LocationComponent,
     ToolbarLocationComponent,
     LocationListComponent,
-    LocationModalComponent,
+    ModalLocationComponent,
+   
   ],
   imports: [
     CommonModule,
