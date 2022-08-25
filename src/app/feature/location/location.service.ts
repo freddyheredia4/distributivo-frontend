@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Location } from './models/location';
+import { LocationDto } from './models/locationDto';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class LocationService {
       //'user': 'admin:123'
     }),
   };
-  public getLocations = (): Observable<Location[]> => {
-    return this.http.get<Location[]>(this.initialUrlLocation, this.httpOptions);
+  public getLocations = (): Observable<LocationDto> => {
+    return this.http.get<LocationDto>(this.initialUrlLocation, this.httpOptions);
   };
 
   public getLocation = (id: string): Observable<Location> => {

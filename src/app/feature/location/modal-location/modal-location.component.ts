@@ -18,7 +18,8 @@ export class ModalLocationComponent implements OnInit {
     id : '',
     name : '',
     coordinates : '',
-    description : ''
+    description : '',
+    status : true
   } 
 
   ngOnInit(): void {
@@ -61,7 +62,8 @@ export class ModalLocationComponent implements OnInit {
       coordinates : '',
       description : '',
       id : '',
-      name : ''
+      name : '',
+      status : true
     }
 
   }

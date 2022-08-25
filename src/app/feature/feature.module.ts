@@ -11,6 +11,7 @@ import { LocationComponent } from './location/location.component';
 import { ToolbarLocationComponent } from './location/toolbar-location/toolbar-location.component';
 import { LocationListComponent } from './location/location-list/location-list.component';
 import { ModalLocationComponent } from './location/modal-location/modal-location.component';
+import { PaginationLocationComponent } from './location/pagination-location/pagination-location.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ModalLocationComponent } from './location/modal-location/modal-location
     ToolbarLocationComponent,
     LocationListComponent,
     ModalLocationComponent,
+    PaginationLocationComponent,
    
   ],
   imports: [
