@@ -12,6 +12,7 @@ import { ToolbarLocationComponent } from './location/toolbar-location/toolbar-lo
 import { LocationListComponent } from './location/location-list/location-list.component';
 import { ModalLocationComponent } from './location/modal-location/modal-location.component';
 import { PaginationLocationComponent } from './location/pagination-location/pagination-location.component';
+import { UploadModalLocationComponent } from './location/upload-modal-location/upload-modal-location.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,15 @@ import { PaginationLocationComponent } from './location/pagination-location/pagi
     LocationListComponent,
     ModalLocationComponent,
     PaginationLocationComponent,
+
+    UploadModalLocationComponent,
    
   ],
   imports: [
     CommonModule,
     FeatureRoutingModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class FeatureModule { }

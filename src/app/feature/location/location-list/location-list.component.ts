@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../location.service';
 import { Location } from '../models/location';
-import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-location-list',
@@ -14,7 +13,7 @@ export class LocationListComponent implements OnInit {
   public currentId : string = '';
 
   constructor(private locationService : LocationService,
-    private toast : NgToastService
+
     ) { }
 
   ngOnInit(): void {
@@ -24,22 +23,22 @@ export class LocationListComponent implements OnInit {
   private getLocations(){
     this.locationService.getLocations().subscribe(
       res => {
-      console.log(res);
-     
-      this.locations = res.locations
+      this.locations = res.locations;
     },
-      err => console.error(err)
-    )
+      err =>{ console.error(err)
+      this.locationService.addDanger('Error', 'Error al traer todas las ubicaciones');
+      }
+      )
   }
 
   public delete(){
     this.locationService.removeLocation(this.currentId).subscribe(
       (res)=>{
         this.getLocations();
-        this.showSuccess('Success', 'Se elimino correctamente');
+        this.locationService.addSuccess('Success', 'Se elimino correctamente');
       },
       (err)=>{
-        this.showError('Error', 'Error al eliminar la ubicacion');
+        this.locationService.addDanger('Error', 'Error al eliminar la ubicacion');
         console.error(err)
       }
     )
@@ -52,16 +51,4 @@ export class LocationListComponent implements OnInit {
      this.currentId = '';
   }
 
-    
-  private showSuccess(title : string, summary : string){
-    this.toast.success({ detail : title ,type :'', summary : summary, duration : 5000,
-    position : ''
-  })
-
-  }
-  
-  private showError(title : string, summary : string){
-    this.toast.error({ detail : title, summary : summary, duration : 5000 })
-
-  }
 }
