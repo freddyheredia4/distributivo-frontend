@@ -18,7 +18,8 @@ export class ModalLocationComponent implements OnInit {
     id : '',
     name : '',
     coordinates : '',
-    description : ''
+    description : '',
+    status : true
   } 
 
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class ModalLocationComponent implements OnInit {
         this.currentEntity = res;
       },
       (err)=>{
+        this.locationService.addDanger('Error', 'Error al buscar el usuario')
         console.error(err);
       }
     )
@@ -51,9 +53,9 @@ export class ModalLocationComponent implements OnInit {
   }); 
     this.locationService.saveLocation(this.currentEntity).subscribe(
       (res)=>{
-        console.table(res)
+        this.locationService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
       },
-      (err)=> console.error(err)
+      (err)=> this.locationService.addDanger('Error', 'Error al guardar la ubicacion')
       )
   }
   removeCurrentEntity(){
@@ -61,7 +63,8 @@ export class ModalLocationComponent implements OnInit {
       coordinates : '',
       description : '',
       id : '',
-      name : ''
+      name : '',
+      status : true
     }
 
   }

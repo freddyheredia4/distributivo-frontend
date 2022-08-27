@@ -12,7 +12,9 @@ export class LocationListComponent implements OnInit {
   public locations : Location[] = [];
   public currentId : string = '';
 
-  constructor(private locationService : LocationService) { }
+  constructor(private locationService : LocationService,
+
+    ) { }
 
   ngOnInit(): void {
     this.getLocations();
@@ -21,19 +23,22 @@ export class LocationListComponent implements OnInit {
   private getLocations(){
     this.locationService.getLocations().subscribe(
       res => {
-      console.log(res);
-      this.locations = res},
-      err => console.error(err)
-    )
+      this.locations = res.locations;
+    },
+      err =>{ console.error(err)
+      this.locationService.addDanger('Error', 'Error al traer todas las ubicaciones');
+      }
+      )
   }
 
   public delete(){
     this.locationService.removeLocation(this.currentId).subscribe(
       (res)=>{
-        console.log(res);
         this.getLocations();
+        this.locationService.addSuccess('Success', 'Se elimino correctamente');
       },
       (err)=>{
+        this.locationService.addDanger('Error', 'Error al eliminar la ubicacion');
         console.error(err)
       }
     )

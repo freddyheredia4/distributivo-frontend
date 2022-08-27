@@ -15,6 +15,8 @@ import { TeacherListComponent } from './teacher/teacher-list/teacher-list.compon
 import { TeacherComponent } from './teacher/teacher.component';
 import { ModalLocationComponent } from './location/modal-location/modal-location.component';
 import { ModalTeacherComponent } from './teacher/modal-teacher/modal-teacher.component';
+import { PaginationLocationComponent } from './location/pagination-location/pagination-location.component';
+import { UploadModalLocationComponent } from './location/upload-modal-location/upload-modal-location.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,15 @@ import { ModalTeacherComponent } from './teacher/modal-teacher/modal-teacher.com
     TeacherListComponent,
     TeacherComponent,
     ModalLocationComponent,
+    PaginationLocationComponent,
+    UploadModalLocationComponent,
     ModalTeacherComponent,
     ],
   imports: [
     CommonModule,
     FeatureRoutingModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class FeatureModule { }

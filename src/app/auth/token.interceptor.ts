@@ -16,8 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
     console.log(request.url);
     let tokenRequest = request.clone(
       {
-        headers: request.headers.set('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTczMzQ0NTUxMCwicm9sIjoiVVNVQVJJT19FTElNSU5BUiJ9.vaZELyc7df-d3C9IOToRzla89kkg2Of7SfrMqRvfVQXRffeSGLF9XAJHqLFoJxgF6w8vk2HFZzncwGeqorOS_w')
-
+        headers : request.headers.set('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTczMzQzNzAxNywicm9sIjoiVVNVQVJJT19FTElNSU5BUiJ9.g9uWwFyxCnlbx-BhueUiiTwMJEIu04kD-k6ZxFyZH2v81m6Vkznj0YhkkIrAHPrIrDEc1EU6A96G2ngpz5YJ9g')
       }
     )
 
