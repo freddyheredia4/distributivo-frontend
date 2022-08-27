@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import { FeatureRoutingModule } from './feature-routing.module';
 import { PersonFormComponent } from './person/form/person.form.component';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +13,8 @@ import { LocationListComponent } from './location/location-list/location-list.co
 import { ToolbarTeacherComponent } from './teacher/toolbar-teacher/toolbar-teacher.component';
 import { TeacherListComponent } from './teacher/teacher-list/teacher-list.component';
 import { TeacherComponent } from './teacher/teacher.component';
+import { ModalLocationComponent } from './location/modal-location/modal-location.component';
+import { ModalTeacherComponent } from './teacher/modal-teacher/modal-teacher.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,10 @@ import { TeacherComponent } from './teacher/teacher.component';
     LocationListComponent,
     ToolbarTeacherComponent,
     TeacherListComponent,
-    TeacherComponent
-  ],
+    TeacherComponent,
+    ModalLocationComponent,
+    ModalTeacherComponent,
+    ],
   imports: [
     CommonModule,
     FeatureRoutingModule,

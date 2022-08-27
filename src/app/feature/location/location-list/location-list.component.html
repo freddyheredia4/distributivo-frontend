@@ -1,3 +1,56 @@
-<div class="flex flex-col">
+<table class="flex w-ful text-xs table-auto flex-col flex-wrap" >
+    <thead class="flex bg-gray-300 text-start" >
+        <th class="w-1/12 text-start" >
+           ID
+        </th>
+        <th class="w-3/12 text-start" >
+           NAME
+        </th>
+        <th class="w-3/12 text-start" >
+           LOCATION
+        </th>
+        <th class="text-start w-3/12" >
+            DESCRIPTION
+         </th>
+        <th class="w-2/12" >
+            Actions
+         </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locations" class="flex  border-b-2" >
+            <td class="w-1/12">
+                {{location.id}}
+            </td>
+            <td class="w-3/12" >
+                {{location.name}}
+            </td>
+            <td class="w-3/12" >
+                {{location.coordinates}}
+            </td>
+            <td class="w-3/12" >
+                {{location.coordinates}}
+            </td>
+            <td class="w-2/12 flex flex-wrap justify-center" >
+                <label for="my-modal" [routerLink]="['/layout/location', location.id]" class="btn btn-xs" >
+                    Editar
+                </label>
+                |
+                <label (click)="setCurrentId(location.id)" for="my-modal1" class="btn btn-xs modal-button">Eliminar</label>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
+<!-- The button to open modal -->
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal1" class="modal-toggle" />
+<div class="modal left-96 bg-opacity-0">
+  <div class="modal-box text-sm rounded-md py-1 w-52 shadow-md border-t-2 h-fit">
+    <p class="font-bold text-gray-600 text-center m-0">Estas seguro de eliminar?</p>
+    <div class="modal-action flex flex-wrap justify-center m-0 ">
+      <label (click)="delete()" for="my-modal1" class="btn text-xs btn-xs btn-primary">Aceptar</label>
+      <label (click)="removeCurrentId()" for="my-modal1" class="btn text-xs btn-xs btn-warning">Cancelar</label>
+    </div>
+  </div>
 </div>
