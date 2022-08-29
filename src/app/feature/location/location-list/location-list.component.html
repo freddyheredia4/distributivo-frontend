@@ -17,7 +17,7 @@
          </th>
     </thead>
     <tbody>
-        <tr *ngFor="let location of locations" class="flex  border-b-2" >
+        <tr *ngFor="let location of locationService.listLocations.locations" class="flex  border-b-2" >
             <td class="w-1/12">
                 {{location.id}}
             </td>

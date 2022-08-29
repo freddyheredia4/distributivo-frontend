@@ -1,7 +1,6 @@
-import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { DowloandExcelService } from 'src/app/excel/dowloand-excel.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LocationService } from '../location.service';
+import { Location } from '../models/location';
 
 @Component({
   selector: 'app-toolbar-location',
@@ -16,8 +15,27 @@ export class ToolbarLocationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
- 
+  handleClickSearch(value : string){
+    this.locationService.getLocationByName(value).subscribe(
+      (data)=>{
+        this.setListLocations(data);
+      }
+      
+)
+
+  }
+  public setListLocations(locations : Location[]){
+    this.locationService.listLocations = {
+      capacity : 0,
+      totalPages : 0,
+      total : 0, 
+      page : 0 ,
+      locations : locations
+    }
+
+  }
 
 }

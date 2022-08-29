@@ -23,8 +23,8 @@
               </div>
         </div>
         <div class="flex" >
-            <input type="text" placeholder="Type here" class="input input-bordered input-sm w-full max-w-xs" />
-            <button class="btn btn-sm btn-warning" >Buscar</button>
+            <input #searchValue type="text" placeholder="Type here" class="input input-bordered input-sm w-full max-w-xs" />
+            <button (click)="handleClickSearch(searchValue.value)" class="btn btn-sm btn-warning">Buscar</button>
         </div>
     </div>
     
@@ -33,5 +33,3 @@
         <app-modal-location></app-modal-location>
     </div>
 </div>
-
-

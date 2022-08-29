@@ -1,6 +1,13 @@
 <div class="btn-group flex justify-center">
-    <button class="btn btn-sm ">1</button>
-    <button class="btn btn-sm btn-active">2</button>
-    <button class="btn btn-sm">3</button>
-    <button class="btn btn-sm">4</button>
+  <a
+    [routerLink]="['/layout/location']"
+    *ngFor="
+      let in of counter(locationService.listLocations.totalPages);
+      let i = index
+    "
+    class="btn btn-sm"
+    [queryParams]="{ page: i }"
+  >
+    {{ i }}
+  </a>
 </div>

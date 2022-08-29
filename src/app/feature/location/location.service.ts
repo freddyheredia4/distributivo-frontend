@@ -9,17 +9,36 @@ import { NgxToastService } from 'ngx-toast-notifier';
 })
 export class LocationService {
   constructor(private http: HttpClient,
-    private ngxToastService : NgxToastService) {}
+    private ngxToastService : NgxToastService
+  ) {}
+
+  public listLocations: LocationDto ={
+
+    capacity : 0,
+    totalPages : 0,
+    locations : [],
+    page : 0,
+    total : 0
+
+  }
+
+
   private initialUrlLocation = 'http://localhost:8080/api/location';
+  
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       //'user': 'admin:123'
     }),
   };
-  public getLocations = (): Observable<LocationDto> => {
-    return this.http.get<LocationDto>(this.initialUrlLocation, this.httpOptions);
+
+  public getLocations = (page : string): Observable<LocationDto> => {
+    return this.http.get<LocationDto>(`${this.initialUrlLocation}?page=${page}`, this.httpOptions);
   };
+
+  public getLocationByName(name : string) : Observable<Location[]>{
+    return this.http.get<Location[]>(`${this.initialUrlLocation}/find/${name}`,this.httpOptions);
+  }
 
   public getLocation = (id: string): Observable<Location> => {
     return this.http.get<Location>(
@@ -45,7 +64,7 @@ export class LocationService {
   };
 
   public removeLocation(id: string) {
-    return this.http.delete<any>(
+    return this.http.put<any>(
       `${this.initialUrlLocation}/${id}`,
       this.httpOptions
     );
@@ -63,7 +82,6 @@ export class LocationService {
     
   } 
 
-  
   addSuccess(title : string, message : string):void{
     this.ngxToastService.onSuccess(title,message)
   }

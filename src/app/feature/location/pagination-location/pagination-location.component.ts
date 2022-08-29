@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-pagination-location',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginationLocationComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(
+    public locationService : LocationService
+  ) { }
 
   ngOnInit(): void {
+    
+
   }
+  press(){
+    alert(this.locationService.listLocations.totalPages);
+  }
+
+  counter(i: number) {
+    return new Array(i);
+}
+  
 
 }

@@ -9,7 +9,7 @@ import { Location } from '../models/location';
   styleUrls: []
 })
 export class ModalLocationComponent implements OnInit {
-
+   
   constructor( private locationService : LocationService,
     private router : Router,
     private activatedRoute : ActivatedRoute ) { }
@@ -47,17 +47,21 @@ export class ModalLocationComponent implements OnInit {
 
   }
 
-  save() : void {
-    this.router.navigateByUrl('/layout', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/layout/location/']);
-  }); 
-    this.locationService.saveLocation(this.currentEntity).subscribe(
-      (res)=>{
-        this.locationService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
-      },
-      (err)=> this.locationService.addDanger('Error', 'Error al guardar la ubicacion')
-      )
+  save() : any {
+    if(!this.validate()){
+     
+      return this.locationService.saveLocation(this.currentEntity).subscribe(
+        (res)=>{
+          this.locationService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
+          this.reload();
+        },
+        (err)=> this.locationService.addDanger('Error', 'Error al guardar la ubicacion')
+        )
+    }
+    this.locationService.addDanger('Error', 'Algunos campos no cumplen con el estandar')
+
   }
+
   removeCurrentEntity(){
     this.currentEntity = {
       coordinates : '',
@@ -68,4 +72,18 @@ export class ModalLocationComponent implements OnInit {
     }
 
   }
+
+  private reload(){
+    this.router.navigateByUrl('/layout', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/layout/location/']);
+  }); 
+  }
+
+  private validate(){
+    return (
+     this.currentEntity.coordinates.length < 10 || 
+     this.currentEntity.name.length < 4 ||
+     this.currentEntity.description.length == 0 
+     )  
+   }
 }
