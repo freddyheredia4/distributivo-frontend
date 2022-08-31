@@ -1,7 +1,8 @@
 interface Location {
     id : string,
     name : string,
-    coordinates : string,
+    longitude : number,
+    latitude : number,
     description : string,
     status : boolean
 }

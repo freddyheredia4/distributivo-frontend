@@ -8,7 +8,8 @@ const routes: Routes = [
     children: [
       {path: '', component:DashboardComponent},
       {path: 'dashboard', component:DashboardComponent},
-      { path: 'location', loadChildren : ()=>import('../feature/location/location.module').then(m=>m.LocationModule)}
+      {path: 'location', loadChildren : ()=>import('../feature/location/location.module').then(m=>m.LocationModule)}
+    ,{ path : 'classroom', loadChildren : ()=>import('../feature/classroom/classroom.module').then(m=>m.ClassroomModule) }
     ]
   }
 ];

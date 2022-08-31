@@ -18,16 +18,17 @@ export class UploadModalLocationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  importLocations(files : FileList | null ){
+  importLocations(input : HTMLInputElement ){
     
-    if(files?.length === 0) return this.locationService.addDanger('Error', 'Ningun archivo seleccionado')
-    this.uploadExcelService.onFileSelected(files!, 'http://localhost:8080/api/location/import-excel')
+    if(input.files?.length === 0) return this.locationService.addDanger('Error', 'Ningun archivo seleccionado')
+    this.uploadExcelService.onFileSelected(input.files!, 'http://localhost:8080/api/location/import-excel')
     ?.subscribe(
       (res)=>{
         this.locationService.addSuccess("Correcto", "Se ha importado correctamente");
+        input.value = '';
       },
       (err)=>{
-        console.log('err')
+        input.value = '';
         this.locationService.addDanger('Error', 'Error al hacer la importacion')
       }
     )
@@ -49,7 +50,5 @@ export class UploadModalLocationComponent implements OnInit {
         }
       )
   }
-
-
 
 }

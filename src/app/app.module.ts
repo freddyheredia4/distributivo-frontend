@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxToastNotifierModule } from 'ngx-toast-notifier';
+import { ClassroomComponent } from './feature/classroom/classroom.component';
 
 @NgModule({
   declarations: [

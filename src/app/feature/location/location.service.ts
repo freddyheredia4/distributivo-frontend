@@ -36,6 +36,10 @@ export class LocationService {
     return this.http.get<LocationDto>(`${this.initialUrlLocation}?page=${page}`, this.httpOptions);
   };
 
+  public findAllLocations(){
+    return this.http.get<Location[]>(`${this.initialUrlLocation}/findAll`)
+  } 
+
   public getLocationByName(name : string) : Observable<Location[]>{
     return this.http.get<Location[]>(`${this.initialUrlLocation}/find/${name}`,this.httpOptions);
   }
@@ -64,8 +68,8 @@ export class LocationService {
   };
 
   public removeLocation(id: string) {
-    return this.http.put<any>(
-      `${this.initialUrlLocation}/${id}`,
+    return this.http.get<any>(
+      `${this.initialUrlLocation}/delete/${id}`,
       this.httpOptions
     );
   }

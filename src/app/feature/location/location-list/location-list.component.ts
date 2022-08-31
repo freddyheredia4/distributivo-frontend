@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../location.service';
-import { Location } from '../models/location';
 
 @Component({
   selector: 'app-location-list',
@@ -9,8 +8,6 @@ import { Location } from '../models/location';
   styleUrls: []
 })
 export class LocationListComponent implements OnInit {
-  
-  public currentId : string = '';
 
   constructor(public locationService : LocationService,
     private route : ActivatedRoute
@@ -25,6 +22,8 @@ export class LocationListComponent implements OnInit {
    
   }
 
+  public currentId = '';
+
   private getLocations(page : string){
     this.locationService.getLocations(page).subscribe(
       res => {
@@ -37,23 +36,22 @@ export class LocationListComponent implements OnInit {
   }
 
   public delete(){
-    this.locationService.removeLocation(this.currentId).subscribe(
-      (res)=>{
-        this.getLocations('0');
-        this.locationService.addSuccess('Success', 'Se elimino correctamente');
-      },
-      (err)=>{
-        this.locationService.addDanger('Error', 'Error al eliminar la ubicacion');
-        console.error(err)
-      }
-    )
+    this.locationService.removeLocation(this.currentId).subscribe( ()=>{
+                  
+      this.getLocations('0');
+      this.locationService.addSuccess('Success', 'Se elimino correctamente');
+
+        });
+          
+      
+     
   }
   public setCurrentId(id : string){
     this.currentId = id;
   }
 
   public removeCurrentId(){
-     this.currentId = '';
+    this.currentId = '';
   }
 
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
 import { Location } from '../models/location';
 
@@ -8,34 +8,28 @@ import { Location } from '../models/location';
   templateUrl: './modal-location.component.html',
   styleUrls: []
 })
-export class ModalLocationComponent implements OnInit {
+export class ModalLocationComponent implements OnChanges  {
    
   constructor( private locationService : LocationService,
-    private router : Router,
-    private activatedRoute : ActivatedRoute ) { }
+  private router : Router ) { }
   
+  @Input() currentId = '';
+
   public currentEntity :Location ={
     id : '',
     name : '',
-    coordinates : '',
+    latitude : 0,
+    longitude : 0,
     description : '',
     status : true
   } 
-
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(
-      (params) => {
-        if (params.get("id")){
-          this.findById(params.get("id")!);
-        }
-      }
-    )
-
+  ngOnChanges(changes: SimpleChanges) {
+    if(!this.validateId()) this.findById();
   }
 
-  private findById(id : string){
+  private findById(){
 
-    this.locationService.getLocation(id).subscribe(
+    this.locationService.getLocation(this.currentId).subscribe(
       (res)=>{
         this.currentEntity = res;
       },
@@ -64,7 +58,8 @@ export class ModalLocationComponent implements OnInit {
 
   removeCurrentEntity(){
     this.currentEntity = {
-      coordinates : '',
+      latitude : 0,
+      longitude : 0,
       description : '',
       id : '',
       name : '',
@@ -79,9 +74,15 @@ export class ModalLocationComponent implements OnInit {
   }); 
   }
 
+  private validateId(){
+
+    return (!this.currentId || this.currentId.length == 0 );
+
+  }
+
   private validate(){
     return (
-     this.currentEntity.coordinates.length < 10 || 
+     //this.currentEntity.coordinates.length < 10 || 
      this.currentEntity.name.length < 4 ||
      this.currentEntity.description.length == 0 
      )  

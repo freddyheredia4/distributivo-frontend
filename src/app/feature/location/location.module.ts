@@ -30,9 +30,9 @@ const routes : Route[] =[
     UploadModalLocationComponent,
     ModalLocationComponent,
     LocationComponent, 
-    PaginationLocationComponent,
-    
-   
+    PaginationLocationComponent, 
+    LocationComponent,
+  
   ],
   providers: [],
 })
