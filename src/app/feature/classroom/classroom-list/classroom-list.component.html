@@ -1,36 +1,48 @@
 <table class="flex w-ful text-xs table-auto flex-col flex-wrap" >
-    <thead class="flex bg-gray-300 text-start" >
+    <thead class="flex gap-3 bg-gray-300 text-start" >
         <th class="w-1/12 text-start" >
            ID
         </th>
-        <th class="w-3/12 text-start" >
+        <th class="w-2/12 text-start" >
            NAME
         </th>
-        <th class="w-3/12 text-start" >
+        <th class="w-1/12 text-start" >
+            CAPACIDAD
+         </th>
+        <th class="w-2/12 text-start" >
            LOCATION
         </th>
+        <th class="w-1/12 text-start" >
+            TIPO
+         </th>
         <th class="text-start w-3/12" >
             DESCRIPTION
          </th>
-        <th class="w-2/12" >
+        <th class="w-1/12" >
             Actions
          </th>
     </thead>
     <tbody>
-        <tr *ngFor="let classroom of classRoomService.listClassrooms.classrooms" class="flex  border-b-2" >
+        <tr *ngFor="let classroom of classRoomService.listClassrooms.classrooms" class="flex gap-3 border-b-2" >
             <td class="w-1/12">
                 {{classroom.id}}
             </td>
-            <td class="w-3/12" >
+            <td class="w-2/12" >
                 {{classroom.name}}
             </td>
-            <td class="w-3/12" >
+            <td class="w-1/12" >
+                {{classroom.capacity}}
+            </td>
+            <td class="w-2/12" >
                 {{classroom.locationName}}
+            </td>
+            <td class="w-1/12" >
+                {{classroom.typeName}}
             </td>
             <td class="w-3/12" >
                 {{classroom.description}}
             </td>
-            <td class="w-2/12 flex flex-wrap justify-center" >
+            <td class="w-1/12 flex flex-wrap justify-center" >
                 <label (click)="setCurrentId(classroom.id)" for="my-modal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
