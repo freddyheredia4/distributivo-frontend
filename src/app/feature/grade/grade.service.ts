@@ -1,0 +1,105 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Grade } from './models/grade';
+import { GradeDto } from './models/gradeDto';
+import { NgxToastService } from 'ngx-toast-notifier';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GradeService {
+
+  constructor( private http : HttpClient,
+    private ngxToastService : NgxToastService ) { }
+
+  public listGrades: GradeDto ={
+
+    capacity : 0,
+    totalPages : 0,
+    grades : [],
+    page : 0,
+    total : 0
+
+  }
+
+
+  private initialUrlGrade = 'http://localhost:8080/api/grade';
+  
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      //'user': 'admin:123'
+    }),
+  };
+
+  public getGrades = (page : string): Observable<GradeDto> => {
+    return this.http.get<GradeDto>(`${this.initialUrlGrade}?page=${page}`, this.httpOptions);
+  };
+
+  public findAllGrades(){
+    return this.http.get<Grade[]>(`${this.initialUrlGrade}/findAll`)
+  } 
+
+  public getGradeByName(name : string) : Observable<Grade[]>{
+    return this.http.get<Grade[]>(`${this.initialUrlGrade}/find/${name}`,this.httpOptions);
+  }
+
+  public getGrade = (id: string): Observable<Grade> => {
+    return this.http.get<Grade>(
+      `${this.initialUrlGrade}/${id}`,
+      this.httpOptions
+    );
+  };
+
+  public saveGrade = (newGrade: Grade): Observable<Grade> => {
+    return this.http.post<Grade>(
+      this.initialUrlGrade,
+      newGrade,
+      this.httpOptions
+    );
+  };
+
+  public updateGrade = (gradeUpdate: Grade): Observable<Grade> => {
+    return this.http.put<Grade>(
+      this.initialUrlGrade,
+      gradeUpdate,
+      this.httpOptions
+    );
+  };
+
+  public removeGrade(id: string) {
+    return this.http.get<any>(
+      `${this.initialUrlGrade}/delete/${id}`,
+      this.httpOptions
+    );
+  }
+  
+  downloadFile() {
+    return this.http.get<Blob>(`${this.initialUrlGrade}/export-to-excel`, 
+    {
+       observe: 'response', responseType: 'blob' as 'json'
+    
+    })
+  }
+
+  submitExcel(){
+    
+  } 
+
+  addSuccess(title : string, message : string):void{
+    this.ngxToastService.onSuccess(title,message)
+  }
+
+  addInfo(title : string, message : string):void{
+    this.ngxToastService.onInfo(title,message)
+  }
+
+  addWarning(title:string, message : string):void{
+    this.ngxToastService.onWarning(title,message)
+  }
+
+  addDanger(title : string, message : string):void{
+    this.ngxToastService.onDanger(title,message)
+  }
+}

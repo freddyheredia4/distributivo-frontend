@@ -4,18 +4,37 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  {path: '', component:MainComponent ,
+  {
+    path: '',
+    component: MainComponent,
     children: [
-      {path: '', component:DashboardComponent},
-      {path: 'dashboard', component:DashboardComponent},
-      {path: 'location', loadChildren : ()=>import('../feature/location/location.module').then(m=>m.LocationModule)}
-    ,{ path : 'classroom', loadChildren : ()=>import('../feature/classroom/classroom.module').then(m=>m.ClassroomModule) }
-    ]
-  }
+      { path: '', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'location',
+        loadChildren: () =>
+          import('../feature/location/location.module').then(
+            (m) => m.LocationModule
+          ),
+      },
+      {
+        path: 'classroom',
+        loadChildren: () =>
+          import('../feature/classroom/classroom.module').then(
+            (m) => m.ClassroomModule
+          ),
+      },
+      {
+        path: 'grade',
+        loadChildren: () =>
+          import('../feature/grade/grade.module').then((m) => m.GradeModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}
