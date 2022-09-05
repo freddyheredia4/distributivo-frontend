@@ -8,6 +8,7 @@ import { PersonListComponent } from './person/list/person-list.component';
 import { PersonToolbarComponent } from './person/toolbar/person-toolbar.component';
 import { CityComboboxComponent } from './city/city-combobox.component';
 import { AuthoritySearchComponent } from './authority/authority-search/authority-search.component';
+import { FormHorarioComponent } from './horario/form-horario/form-horario.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AuthoritySearchComponent } from './authority/authority-search/authority
     PersonListComponent,
     PersonToolbarComponent,
     CityComboboxComponent,
-    AuthoritySearchComponent
+    AuthoritySearchComponent,
+    FormHorarioComponent
   ],
   imports: [
     CommonModule,
