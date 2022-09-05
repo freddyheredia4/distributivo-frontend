@@ -29,6 +29,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../feature/grade/grade.module').then((m) => m.GradeModule),
       },
+      {
+        path: 'schedule',
+        loadChildren: () =>
+          import('../feature/schedule/schedule.module').then(
+            (c) => c.ScheduleModule
+          ),
+      },
     ],
   },
 ];
