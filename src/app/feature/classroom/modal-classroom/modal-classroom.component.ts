@@ -24,7 +24,7 @@ export class ModalClassroomComponent implements OnChanges{
     name : '',
     capacity : 0,
     location : null,
-    type : null,
+    type : '',
     locationName : null,
     typeName : null, 
     description : '' 
@@ -86,10 +86,15 @@ export class ModalClassroomComponent implements OnChanges{
       description : '',
 
       location : null,
-      type : null,
+      type : '',
       locationName : null,
       typeName : null
     }
+
+  }
+
+  public setType(id : string){
+    this.currentEntity.type = id;
 
   }
 

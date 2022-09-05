@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { Grade } from './models/grade';
 import { GradeDto } from './models/gradeDto';
 import { NgxToastService } from 'ngx-toast-notifier';
+import { Career } from './models/career';
+import { GradeForCareer } from './models/gradeForCareer';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +14,12 @@ import { NgxToastService } from 'ngx-toast-notifier';
 export class GradeService {
 
   constructor( private http : HttpClient,
-    private ngxToastService : NgxToastService ) { }
+    private ngxToastService : NgxToastService,
+    private router : Router ) { }
 
-  public listGrades: GradeDto ={
-
-    capacity : 0,
-    totalPages : 0,
-    grades : [],
-    page : 0,
-    total : 0
+  public listGrades: GradeForCareer[] =[]
+  getCareers(): Observable<Career[]> {
+    return this.http.get<Career[]>(`${this.initialUrlGrade}/careers`, this.httpOptions)
 
   }
 
@@ -41,8 +41,8 @@ export class GradeService {
     return this.http.get<Grade[]>(`${this.initialUrlGrade}/findAll`)
   } 
 
-  public getGradeByName(name : string) : Observable<Grade[]>{
-    return this.http.get<Grade[]>(`${this.initialUrlGrade}/find/${name}`,this.httpOptions);
+  public getGradeByName(name : string) : Observable<GradeForCareer[]>{
+    return this.http.get<GradeForCareer[]>(`${this.initialUrlGrade}/find/${name}`,this.httpOptions);
   }
 
   public getGrade = (id: string): Observable<Grade> => {
@@ -61,8 +61,8 @@ export class GradeService {
   };
 
   public updateGrade = (gradeUpdate: Grade): Observable<Grade> => {
-    return this.http.put<Grade>(
-      this.initialUrlGrade,
+    return this.http.post<Grade>(
+      this.initialUrlGrade + '/update',
       gradeUpdate,
       this.httpOptions
     );
@@ -74,6 +74,11 @@ export class GradeService {
       this.httpOptions
     );
   }
+
+  public getGradesByCareer(): Observable<GradeForCareer[]>{
+    return this.http.get<GradeForCareer[]>(this.initialUrlGrade, this.httpOptions)
+
+  }
   
   downloadFile() {
     return this.http.get<Blob>(`${this.initialUrlGrade}/export-to-excel`, 
@@ -82,6 +87,19 @@ export class GradeService {
     
     })
   }
+
+  reload(){
+    this.router.navigateByUrl('/layout', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/layout/grade/']);
+  }); 
+  }
+
+  public searchGradesByCareer(): Observable<GradeForCareer[]>{
+    return this.http.get<GradeForCareer[]>(this.initialUrlGrade, this.httpOptions)
+
+  }
+  
+
 
   submitExcel(){
     

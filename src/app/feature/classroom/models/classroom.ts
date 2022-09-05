@@ -1,7 +1,7 @@
 interface ClassRoom {
     id:       string;
     name:     string;
-    type:     number | null;
+    type:     string
     capacity: number;
     location: number | null;
     locationName: string | null;

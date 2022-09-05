@@ -1,9 +1,13 @@
 
   <figure class="w-fit relative action rounded bg-amber-300">
-    <h2 class="font-normal p-3 text-center text-gray-800">Estadistica</h2>
+    <p class="font-medium p-3 text-center text-gray-800">{{grade.name}}</p>
     <div class="overlay">
-      <div class="flex items-center justify-center gap-3 w-full h-full">
-        <button class="btn btn-sm">
+      <div class="flex items-center justify-center gap-2 w-full h-full">
+        <label
+        for="my-modal-grade"
+        routerLink="/layout/grade"
+        [queryParams]="{g : grade.id}"
+         class="btn btn-xs">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -20,8 +24,8 @@
               d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
             />
           </svg>
-        </button>
-        <button class="btn btn-sm">
+        </label>
+        <button (click)="delete(grade.id)" class="btn btn-xs">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

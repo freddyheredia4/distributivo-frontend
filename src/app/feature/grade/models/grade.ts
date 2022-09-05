@@ -6,7 +6,7 @@ interface Grade{
     parallel: number | null;
     careerName : string;
     status : boolean;
-    career : number | null
+    career : string
 }
 
 export { Grade};

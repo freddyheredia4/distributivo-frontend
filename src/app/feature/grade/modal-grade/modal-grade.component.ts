@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GradeService } from '../grade.service';
 import { Grade } from '../models/grade';
 
@@ -8,17 +8,25 @@ import { Grade } from '../models/grade';
   templateUrl: './modal-grade.component.html',
   styleUrls: []
 })
-export class ModalGradeComponent implements OnChanges {
+export class ModalGradeComponent implements OnInit {
 
   constructor( private gradeService : GradeService,
-    private router : Router ) { }
+    private route : ActivatedRoute ) { }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params =>{
+      this.currentId = params['g'] || ''
 
-    @Input() currentId = '';
+    if(!this.validateId()) this.findById()});
+  }
+
+
+    currentId = '';
     ngOnChanges(changes: SimpleChanges) {
-      if(!this.validateId()) this.findById();
-    }
+     
 
+    }
   
+    
   public currentEntity :Grade =this.getClearGrade()
 
   private findById(){
@@ -36,11 +44,13 @@ export class ModalGradeComponent implements OnChanges {
   }
 
   public saveOrUpdate(){
-    if(this.validateId()){
-      this.save();
-    }else{
-      this.update();
-    }
+   if(this.validate()) return this.gradeService.addDanger(
+    'Error',
+    'Algunos campos no cumplen con el estandar'
+    )
+   if(this.validateId()) return this.save();
+   this.update();
+    
   }
 
   private save() : any {
@@ -49,7 +59,7 @@ export class ModalGradeComponent implements OnChanges {
       return this.gradeService.saveGrade(this.currentEntity).subscribe(
         (res)=>{
           this.gradeService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
-          this.reload();
+          this.gradeService.reload();
         },
         (err)=> this.gradeService.addDanger('Error', 'Error al guardar la ubicacion')
         )
@@ -62,7 +72,7 @@ export class ModalGradeComponent implements OnChanges {
      return this.gradeService.updateGrade(this.currentEntity).subscribe(
       (res)=>{
         this.gradeService.addSuccess('Correcto', 'Se edito correctamente la ubicacion');
-        this.reload();
+        this.gradeService.reload();
       },
       (err)=> this.gradeService.addDanger('Error', 'Error al editar la ubicacion')
       )
@@ -78,7 +88,7 @@ export class ModalGradeComponent implements OnChanges {
       parallel : null,
       status : true,
       workingDay : null,
-      career : null
+      career : ''
     }
 
   }
@@ -86,11 +96,6 @@ export class ModalGradeComponent implements OnChanges {
     this.currentEntity = this.getClearGrade();
   }
 
-  private reload(){
-    this.router.navigateByUrl('/layout', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/layout/Grade/']);
-  }); 
-  }
 
   private validateId(){
 
@@ -99,16 +104,15 @@ export class ModalGradeComponent implements OnChanges {
   }
 
   addCareer(value : string){
-    this.currentEntity.career = parseInt(value);
+    this.currentEntity.career = value;
   }
 
- /* private validate(){
+  private validate(){
     return (
-     this.currentEntity.coordinates.length < 10 || 
-     this.currentEntity.name.length < 4 ||
-     this.currentEntity.description.length == 0 
+     //this.currentEntity.coordinates.length < 10 || 
+     this.currentEntity.name.length < 4 //||
+     //this.currentEntity.description.length == 0 
      )  
     }
-  */
-
+  
 }

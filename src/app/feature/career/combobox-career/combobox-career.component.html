@@ -1,0 +1,13 @@
+<label class="block">Carrera</label>
+<select #careercom
+  (change)="addCareerEmittier(careercom.value)"
+
+  class="select bg-gray-300 rounded-none select-sm w-28 max-w-xs"
+>
+  <option value="null" disabled selected>
+    carrera
+  </option>
+  <option *ngFor="let career of careers" [value]="career.id"
+  [selected]="careerId ==career.id"
+  >{{career.name}}</option>
+</select>

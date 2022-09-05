@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LocationService } from '../location.service';
 import { Location } from '../models/location';
 
@@ -10,6 +10,7 @@ import { Location } from '../models/location';
 export class LocationComboboxComponent implements OnInit {
 
   @Output() locationEventEmittier = new EventEmitter<string>();
+  @Input() locationId = '';
 
   constructor(
     private locationService : LocationService

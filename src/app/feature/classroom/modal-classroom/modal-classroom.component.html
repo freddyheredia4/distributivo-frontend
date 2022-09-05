@@ -3,7 +3,7 @@
 <div class="modal">
   <div class="modal-box w-96 flex-col flex items-center">
     <h3 class="text-center w-full font-bold border-b-2 text-xl">
-      Nueva ubicacion
+      Nueva Aula
     </h3>
     <div class="flex flex-col w-full text-xs gap-x-4-2">
       <div class="flex w-full gap-1 justify-between flex-row">
@@ -54,17 +54,11 @@
         </div>
         <div class="flex flex-col">
           <label for="">Tipo</label>
-          <select class="select bg-gray-300  rounded-none w-full select-sm max-w-xs">
-            <option value="null" disabled selected>Pick your favorite language</option>
-            <option  ></option>
-            
-          </select>
+          <app-classroom-type-combobox (changeTypeEvent)="addLocation($event)" ></app-classroom-type-combobox>
         </div>
       
       </div>
     </div>
-    
-    
     <div class="flex text-xs p-3 w-full flex-col">
       <label for="">Description</label>
       <textarea

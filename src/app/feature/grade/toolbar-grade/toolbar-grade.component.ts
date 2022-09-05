@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GradeService } from '../grade.service';
-import { Grade } from '../models/grade';
+import { GradeForCareer } from '../models/gradeForCareer';
 
 @Component({
   selector: 'app-toolbar-grade',
@@ -18,7 +18,12 @@ export class ToolbarGradeComponent implements OnInit {
     
   }
 
-  handleClickSearch(value : string){
+  handleClickSearch(value : string) : any
+   {
+    if(value.length == 0)this.gradeService.getGradesByCareer().subscribe(
+      (data)=> this.setListGrades(data)
+    );
+    else
     this.gradeService.getGradeByName(value).subscribe(
       (data)=>{
         this.setListGrades(data);
@@ -27,14 +32,8 @@ export class ToolbarGradeComponent implements OnInit {
 )
 
   }
-  public setListGrades(grade : Grade[]){
-    this.gradeService.listGrades = {
-      capacity : 0,
-      totalPages : 0,
-      total : 0, 
-      page : 0 ,
-      grades : grade
-    }
+  public setListGrades(grades : GradeForCareer[]){
+    this.gradeService.listGrades = grades
 
   }
   

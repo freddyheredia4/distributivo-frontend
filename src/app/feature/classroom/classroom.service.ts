@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxToastService } from 'ngx-toast-notifier';
 import { Observable } from 'rxjs';
 import { ClassRoom } from './models/classroom';
@@ -11,7 +12,8 @@ import { ClassRoomDto } from './models/classroomDto';
 export class ClassroomService {
 
   constructor(private http: HttpClient,
-    private ngxToastService : NgxToastService
+    private ngxToastService : NgxToastService,
+    private router : Router
   ) {}
 
   public listClassrooms: ClassRoomDto ={ 
@@ -76,6 +78,12 @@ export class ClassroomService {
        observe: 'response', responseType: 'blob' as 'json'
     
     })
+  }
+
+  reload(){
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['Your actualComponent']);
+  }); 
   }
 
   addSuccess(title : string, message : string):void{

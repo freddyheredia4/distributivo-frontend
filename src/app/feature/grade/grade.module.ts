@@ -7,6 +7,9 @@ import { UploadModalGradeComponent } from './upload-modal-grade/upload-modal-gra
 import { ModalGradeComponent } from './modal-grade/modal-grade.component';
 import { ListGradeComponent } from './list-grade/list-grade.component';
 import { CardGradeComponent } from './card-grade/card-grade.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ComboboxCareerComponent } from '../career/combobox-career/combobox-career.component';
 
 const routes : Route[] = [
     {
@@ -20,12 +23,14 @@ const routes : Route[] = [
 ]
 
 @NgModule({
-    imports: [ RouterModule.forChild(routes) ],
+    imports: [ RouterModule.forChild(routes), FormsModule, CommonModule ],
     exports: [],
     declarations: [GradeComponent, ToolbarGradeComponent, UploadModalGradeComponent,
          ModalGradeComponent,
          ListGradeComponent,
-         CardGradeComponent],
+         CardGradeComponent,
+         ComboboxCareerComponent
+],
     providers: [],
 })
 export class GradeModule { }

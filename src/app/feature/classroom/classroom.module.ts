@@ -11,6 +11,7 @@ import { ModalClassroomComponent } from './modal-classroom/modal-classroom.compo
 import { PaginationClassroomComponent } from './pagination-classroom/pagination-classroom.component';
 import { ToolbarClassroomComponent } from './toolbar-classroom/toolbar-classroom.component';
 import { UploadModalClassroomComponent } from './upload-modal-classroom/upload-modal-classroom.component';
+import { ClassroomTypeComboboxComponent } from './classroom-type-combobox/classroom-type-combobox.component';
 
 const routes : Route[] =[
     {
@@ -30,7 +31,8 @@ const routes : Route[] =[
         UploadModalClassroomComponent,
         ModalClassroomComponent,
         PaginationClassroomComponent,
-        LocationComboboxComponent
+        LocationComboboxComponent,
+        ClassroomTypeComboboxComponent
 
     
     ],

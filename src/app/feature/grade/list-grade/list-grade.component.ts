@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GradeService } from '../grade.service';
 
 @Component({
   selector: 'app-list-grade',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListGradeComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(
+    public gradeService : GradeService
+  ) { }
 
   ngOnInit(): void {
+    this.getGradesForCareer();
+  }
+
+  private getGradesForCareer(){
+    this.gradeService.getGradesByCareer().subscribe(
+      res=> this.gradeService.listGrades = res
+
+    );
+
   }
 
 }

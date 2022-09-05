@@ -25,7 +25,7 @@ export class UploadModalGradeComponent implements OnInit {
     ?.subscribe(
       (res)=>{
         this.gradeService.addSuccess("Correcto", "Se ha importado correctamente");
-        this.gradeService.getGrades('0').subscribe(
+        this.gradeService.searchGradesByCareer().subscribe(
           res =>this.gradeService.listGrades = res
         )
       },
