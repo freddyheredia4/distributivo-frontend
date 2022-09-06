@@ -1,1 +1,7 @@
-<p>item-calendar works!</p>
+
+<div (click)="onClickItem()" [ngStyle]="{'backgroundColor' : event.teacher.color}" class="text-white h-full cursor-pointer hover:opacity-80 py-2 w-full text-center" >
+ {{event.subject}} 
+
+<p class="text-xs">{{event.teacher.name}}</p>
+</div>
+<label id="label-modal-view-event-calendar" for="modal-view-event-calendar"></label>

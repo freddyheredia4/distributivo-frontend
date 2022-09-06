@@ -7,16 +7,22 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ItemCalendarComponent } from './item-calendar/item-calendar.component';
 import { ToolbarScheduleComponent } from './toolbar-schedule/toolbar-schedule.component';
 
-const routes : Route[] =[
-    {
-      path : '', component : ScheduleComponent
-    }
-  ]
+const routes: Route[] = [
+  {
+    path: '',
+    component: ScheduleComponent,
+  },
+];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes), CommonModule, FormsModule],
-    exports: [],
-    declarations: [ScheduleComponent, CalendarComponent, ItemCalendarComponent, ToolbarScheduleComponent],
-    providers: [],
+  imports: [RouterModule.forChild(routes), CommonModule, FormsModule],
+  exports: [],
+  declarations: [
+    ScheduleComponent,
+    CalendarComponent,
+    ItemCalendarComponent,
+    ToolbarScheduleComponent,
+  ],
+  providers: [],
 })
-export class ScheduleModule { }
+export class ScheduleModule {}
