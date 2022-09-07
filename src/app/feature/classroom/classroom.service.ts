@@ -65,6 +65,11 @@ export class ClassroomService {
     );
   };
 
+  public findAllClassrooms() : Observable<ClassRoom[]> {
+    return this.http.get<ClassRoom[]>(`${this.initialUrlCLassroom}/findAll`, this.httpOptions);
+
+  }
+
   public removeCLassroom(id: string) {
     return this.http.get<any>(
       `${this.initialUrlCLassroom}/delete/${id}`,

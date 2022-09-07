@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GradeService } from '../../grade/grade.service';
-import { Career } from '../../grade/models/career';
+import { GradeService } from '../../../feature/grade/grade.service';
+import { Career } from '../../../feature/grade/models/career';
 
 @Component({
   selector: 'app-combobox-career',
@@ -29,6 +29,7 @@ export class ComboboxCareerComponent implements OnInit {
   }
 
   addCareerEmittier(id : string){
+    
     this.careerSelectEvent.emit(id);
 
   }

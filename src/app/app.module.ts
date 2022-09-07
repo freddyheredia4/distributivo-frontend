@@ -12,7 +12,7 @@ import { NgxToastNotifierModule } from 'ngx-toast-notifier';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
 
   ],
   imports: [

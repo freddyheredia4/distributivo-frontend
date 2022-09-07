@@ -1,6 +1,7 @@
 {
   "from": 13,
   "to": 18,
+  "month" : "Marzo",
   "hours": [
     {
       "position": "07:00-08:00",
