@@ -9,7 +9,7 @@ import { PersonToolbarComponent } from './person/toolbar/person-toolbar.componen
 import { CityComboboxComponent } from './city/city-combobox.component';
 import { AuthoritySearchComponent } from './authority/authority-search/authority-search.component';
 import { FormHorarioComponent } from './horario/form-horario/form-horario.component';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,10 @@ import { FormHorarioComponent } from './horario/form-horario/form-horario.compon
   imports: [
     CommonModule,
     FeatureRoutingModule,
-    FormsModule
-  ]
+    FormsModule,
+    FullCalendarModule,
+  ],
+
+
 })
 export class FeatureModule { }
