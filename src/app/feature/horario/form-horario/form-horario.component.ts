@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
+import { HorarioService } from '../horario.service';
 
 @Component({
   selector: 'app-form-horario',
@@ -7,22 +8,35 @@ import { CalendarOptions } from '@fullcalendar/angular';
 })
 export class FormHorarioComponent implements OnInit {
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: [
-      { title: 'event 1', date: '2019-04-01' },
-      { title: 'event 2', date: '2019-04-02' }
-    ]
-  };
+ 
+  events: any[] = [];
 
-  handleDateClick(arg: { dateStr: string; }) {
-    alert('date click! ' + arg.dateStr)
-  }
+  options: any;
 
-  constructor() { }
+  header: any;
 
-  ngOnInit(): void {
+  constructor(
+    private horarioService: HorarioService
+  ) { }
+
+  ngOnInit() {
+      this.horarioService.getEvents().then(events => {
+          // this.events = events;
+          this.options = {...this.options, ...{events: events}};
+      });
+
+      this.options = {
+              initialDate :  new Date(),
+              headerToolbar: {
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'dayGridMonth,timeGridWeek,timeGridDay'
+              },
+              editable: true,
+              selectable:true,
+              selectMirror: true,
+              dayMaxEvents: true
+      };
   }
 
 }
