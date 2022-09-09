@@ -71,6 +71,26 @@
           "classroom": "aula1"
         },
         {
+          "day": "13",
+          "hour" : "09:00-10:00",
+          "subject": "Matematica Discreta",
+          "teacher": {
+            "name": "Patricio Pachacama",
+            "color": "rgb(99 102 241)"
+          },
+          "classroom": "aula1"
+        },
+        {
+          "day": "14",
+          "hour" : "09:00-10:00",
+          "subject": "Matematicaaa Discreta",
+          "teacher": {
+            "name": "Raul Pachacama",
+            "color": "rgb(14 165 233)"
+          },
+          "classroom": "aula1"
+        },
+        {
           "day": "15",
           "hour" : "09:00-10:00",
           "subject": "Matematica Discreta",
@@ -150,6 +170,16 @@
           "classroom": "aula1"
         },
         {
+          "day": "13",
+          "hour" : "12:00-13:00",
+          "subject": "Diseno web",
+          "teacher": {
+            "name": "Anderson Macias",
+            "color": "rgb(239 68 68)"
+          },
+          "classroom": "aula1"
+        },
+        {
           "day": "14",
           "hour" : "12:00-13:00",
           "subject": "Matematica Discreta",
@@ -182,6 +212,16 @@
           "subject": "Matematica Discreta",
           "teacher": {
             "name": "Patricio Pachacama",
+            "color": "rgb(14 165 233)"
+          },
+          "classroom": "aula1"
+        },
+        {
+          "day": "16",
+          "hour" : "13:00-14:00",
+          "subject": "Programacion Visual",
+          "teacher": {
+            "name": "Freddy Heredia",
             "color": "rgb(14 165 233)"
           },
           "classroom": "aula1"
@@ -264,8 +304,17 @@
             "color": "rgb(244 63 94)"
           },
           "classroom": "aula1"
+        },
+        {
+          "day": "13",
+          "hour" : "16:00-17:00",
+          "subject": "Tendencias en el desarrollo de Software",
+          "teacher": {
+            "name": "Paul Navas",
+            "color": "rgb(14 165 233)"
+          },
+          "classroom": "aula1"
         }
-        
       ]
     }
     
