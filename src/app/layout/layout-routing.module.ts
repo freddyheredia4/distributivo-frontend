@@ -36,6 +36,13 @@ const routes: Routes = [
             (c) => c.ScheduleModule
           ),
       },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('../feature/user/user.module').then(
+            (c) => c.UserModule
+          ),
+      },
     ],
   },
 ];
