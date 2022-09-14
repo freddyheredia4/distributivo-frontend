@@ -14,7 +14,6 @@ export class LoginService {
     credential: Credenciales
   ): Observable<HttpResponse<Credenciales>> {
     const cred = btoa(credential.username + ':' + credential.password);
-    console.log(cred);
     const httpOptions = {
       headers: new HttpHeaders({ Authorization: 'Basic ' + cred }),
       observe: 'response' as 'body',

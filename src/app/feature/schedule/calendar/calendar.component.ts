@@ -27,7 +27,6 @@ export class CalendarComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    console.log(this.events);
   }
 
   giveEvent(day: number, hour: Hour): Event {

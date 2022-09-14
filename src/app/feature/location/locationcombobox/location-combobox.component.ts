@@ -23,7 +23,6 @@ export class LocationComboboxComponent implements OnInit {
   }
 
   changeLocation(value : string){
-    console.log(value);
     this.locationEventEmittier.emit(value);
 
   }

@@ -26,6 +26,9 @@ export class UploadModalUserComponent implements OnInit {
       (res)=>{
         this.UserService.addSuccess("Correcto", "Se ha importado correctamente");
         input.value = '';
+        this.UserService.getUsers('0').subscribe(
+          res=> this.UserService.listUsers = res
+        )
       },
       (err)=>{
         input.value = '';

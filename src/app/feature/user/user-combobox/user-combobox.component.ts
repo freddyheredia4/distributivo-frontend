@@ -23,7 +23,6 @@ export class UserComboboxComponent implements OnInit {
   }
 
   changeUser(value : string){
-    console.log(value);
     this.UserEventEmittier.emit(value);
 
   }

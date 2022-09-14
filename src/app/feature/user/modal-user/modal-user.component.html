@@ -1,6 +1,6 @@
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="my-modal" class="modal-toggle" />
-<div class="modal">
+<div class="modal justify-center pl-52 flex-row">
   <div class="modal-box w-96 flex-col flex items-center">
     <h3 class="text-center w-full font-bold border-b-2 text-xl">
       Nueva usuario
@@ -72,4 +72,7 @@
       >
     </div>
   </div>
+  <app-list-role-user [roles]="currentEntity.roles" (deleteRoleEmmit)="deleteRole($event)" (addRoleEmmit)="addRoleUser($event)" ></app-list-role-user>
+  
+
 </div>

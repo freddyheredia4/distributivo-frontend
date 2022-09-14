@@ -6,12 +6,13 @@
         <th class="w-3/12 text-start" >
            NAME
         </th>
+        <th class="text-start w-3/12" >
+            USERNAME
+             </th>
         <th class="w-3/12 text-start" >
            CONTRASENA
         </th>
-        <th class="text-start w-3/12" >
-        USERNAME
-         </th>
+      
         <th class="w-2/12" >
             Actions
          </th>
@@ -25,10 +26,10 @@
                 {{user.name}}
             </td>
             <td class="w-3/12" >
-                confidencial
+                {{user.username}}
             </td>
             <td class="w-3/12" >
-                {{user.username}}
+                no disponible
             </td>
             <td class="w-2/12 flex flex-wrap justify-center" >
                 <label (click)="setCurrentId(user.id)" for="my-modal">

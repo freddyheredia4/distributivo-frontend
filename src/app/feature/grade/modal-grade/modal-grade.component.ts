@@ -104,7 +104,6 @@ export class ModalGradeComponent implements OnInit {
   }
 
   addCareer(value : string){
-    console.log(value);
     this.currentEntity.career = value;
   }
 

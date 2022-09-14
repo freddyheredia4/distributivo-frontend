@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../models/user';
+import { UserRole } from '../../role/models/userRole';
 
 @Component({
   selector: 'app-modal-user',
@@ -20,7 +21,8 @@ export class ModalUserComponent implements OnChanges  {
     name : '',
     password : '',
     looked : false,
-    username : ''
+    username : '',
+    roles: []
   } 
   ngOnChanges(changes: SimpleChanges) {
     if(!this.validateId()) this.findById();
@@ -40,6 +42,17 @@ export class ModalUserComponent implements OnChanges  {
 
   }
 
+ public addRoleUser (role : UserRole){
+ 
+  const exist = this.currentEntity.roles.some(existRole => {
+    return role.roleId == existRole.roleId
+  });
+  if(!exist) this.currentEntity.roles.push(role);
+  
+
+
+ }
+
   save() : any {
     if(!this.validate()){
      
@@ -55,6 +68,11 @@ export class ModalUserComponent implements OnChanges  {
 
   }
 
+  public deleteRole(id : string){
+    this.currentEntity.roles = this.currentEntity.roles.filter(role => role.id != id)
+
+  }
+
   removeCurrentEntity(){
     this.currentEntity = {
      
@@ -62,7 +80,8 @@ export class ModalUserComponent implements OnChanges  {
       id : '',
       name : '',
       looked : false,
-      username : ''
+      username : '',
+      roles : []
     }
 
   }
