@@ -6,6 +6,10 @@ import { PersonListComponent } from '../feature/person/list/person-list.componen
 import { TeacherComponent } from '../feature/teacher/teacher.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TeacherListComponent } from '../feature/teacher/teacher-list/teacher-list.component';
+import { CareerComponent } from '../feature/career/career.component';
+import { DistributivoDocenteComponent } from '../feature/distributivo-docente/distributivo-docente.component';
+import { DistibutivoDocenteFormComponent } from '../feature/distributivo-docente/distibutivo-docente-form/distibutivo-docente-form.component';
 const routes: Routes = [
   {path: '', component:MainComponent ,
     children: [
@@ -15,9 +19,13 @@ const routes: Routes = [
       {path: 'person-list', component:PersonListComponent},
       {path: 'dashboard', component:DashboardComponent},
       {path: 'location', component: LocationComponent  },
-      {path: 'teacher', component: TeacherComponent},
       {path: 'location/:id', component : LocationComponent},
-      {path: 'teacher/:id', component: TeacherComponent}
+      {path: 'teacher', component: TeacherComponent},
+      {path: 'teacher-list', component: TeacherListComponent},
+      {path: 'teacher/:id', component: TeacherComponent},
+      {path: 'career', component: CareerComponent },
+      {path: 'distributivo-docente', component: DistributivoDocenteComponent},
+      {path: 'distributivoForm', component: DistibutivoDocenteFormComponent }
     ]
   }
 ]
