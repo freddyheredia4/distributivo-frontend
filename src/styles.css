@@ -38,6 +38,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     
 }
 
+.w-1-8 {
+  width: 12.5%;
+
+}
+
 .overlay{
     z-index: 1;
     position: absolute;

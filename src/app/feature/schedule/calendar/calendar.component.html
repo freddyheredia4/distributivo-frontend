@@ -1,29 +1,34 @@
 <table class="w-full">
-  <thead class="bg-slate-700">
-    <tr class="flex text-white">
-      <th class="w-2/12 border-b border-r">Hora</th>
-      <th class="w-2/12 border-b border-r">Lunes</th>
-      <th class="w-2/12 border-b border-r">Martes</th>
-      <th class="w-2/12 border-b border-r">Miercoles</th>
-      <th class="w-2/12 border-b border-r">Jueves</th>
-      <th class="w-2/12 border-b border-r">Viernes</th>
+  <thead class="bg-zinc-600">
+    <tr class="flex text-white ">
+      <th class=" w-1-8 border-b border-r">Hora</th>
+    
+      <th class=" w-1-8 border-b border-r">Lunes</th>
+      <th class=" w-1-8 border-b border-r">Martes</th>
+      <th class=" w-1-8 border-b border-r">Miercoles</th>
+      <th class=" w-1-8 border-b border-r">Jueves</th>
+      <th class=" w-1-8 border-b border-r">Viernes</th>
+      <th class=" border-b w-1-8 border-r">Sabado</th>
+        <th class=" w-1-8 border-b border-r">Domingo</th>
+      
     </tr>
-  </thead>
-  <tbody>
     <tr class="flex bg-slate-700 text-white">
-      <td class="w-2/12 border-b border-r text-center"></td>
+      <td class="w-1-8 border-b border-r text-center"></td>
       <td
         *ngFor="let i of counter()"
-        class="w-2/12 border-b border-r text-center"
+        class=" w-1-8 border-b border-r text-center"
       >
         {{ i }}
       </td>
     </tr>
-    <tr *ngFor="let hour of events.hours" class="flex text-gray-700 text-sm">
-      <td class="w-2/12 border-b border-r text-center">{{ hour.position }}</td>
+  </thead>
+  <tbody>
+   
+    <tr *ngFor="let hour of events.hours" class="flex h-14 overflow-hidden text-gray-700 text-sm">
+      <td class="w-1-8 border-b border-r text-center">{{ hour.position }}</td>
       <td
         *ngFor="let event of counter()"
-        class="w-2/12 border-b border-r p-0 text-center"
+        class="w-1-8 border-b border-r p-0 text-center"
       >
         <app-item-calendar (clickItemEmittier)="handleClickItem($event)" [event]="giveEvent(event, hour)"></app-item-calendar>
       </td>
@@ -36,6 +41,7 @@
   <div class="modal-box relative">
     <label for="modal-view-event-calendar" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 class="text-lg font-bold">{{currentEntity.subject}}</h3>
-    <p class="py-4">{{currentEntity.teacher.name}}</p>
+    <p class=""><strong>Aula: </strong> {{currentEntity.classroom}}</p>
+     <p class=""><strong>Docente: </strong> {{currentEntity.teacher.name}}</p>
   </div>
 </div>

@@ -1,5 +1,5 @@
-<select #classroomcom class="p-2 text-gray-600 outline-none border-none active:outline-none focus:outline-none" name="" id="">
-  <option value="null" selected>
+<select #classroom (change)="addclassroomEmittier(classroom.value)" class="p-2 text-gray-600 outline-none border-none active:outline-none focus:outline-none" name="" id="">
+  <option value="" selected>
     AULA
   </option>
   <option *ngFor="let classroom of classrooms" [value]="classroom.id"
