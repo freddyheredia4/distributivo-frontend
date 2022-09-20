@@ -1,6 +1,5 @@
 export interface ScheduleEvents {
-  from:  number;
-  to:    number;
+  toFrom : number[]
   hours: Hour[];
 }
 

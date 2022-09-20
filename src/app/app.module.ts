@@ -16,7 +16,6 @@ import { TeacherComboboxComponent } from './feature/teacher/teacher-combobox/tea
   declarations: [
     AppComponent,
     LoginComponent,
-    TeacherComboboxComponent,
 
   ],
   imports: [

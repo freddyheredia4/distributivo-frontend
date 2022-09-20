@@ -2,7 +2,6 @@
   <thead class="bg-zinc-600">
     <tr class="flex text-white ">
       <th class=" w-1-8 border-b border-r">Hora</th>
-    
       <th class=" w-1-8 border-b border-r">Lunes</th>
       <th class=" w-1-8 border-b border-r">Martes</th>
       <th class=" w-1-8 border-b border-r">Miercoles</th>
@@ -15,10 +14,10 @@
     <tr class="flex bg-slate-700 text-white">
       <td class="w-1-8 border-b border-r text-center"></td>
       <td
-        *ngFor="let i of counter()"
+        *ngFor="let day of events.toFrom"
         class=" w-1-8 border-b border-r text-center"
       >
-        {{ i }}
+        {{ day }}
       </td>
     </tr>
   </thead>
@@ -27,10 +26,10 @@
     <tr *ngFor="let hour of events.hours" class="flex h-14 overflow-hidden text-gray-700 text-sm">
       <td class="w-1-8 border-b border-r text-center">{{ hour.position }}</td>
       <td
-        *ngFor="let event of counter()"
+        *ngFor="let day of events.toFrom"
         class="w-1-8 border-b border-r p-0 text-center"
       >
-        <app-item-calendar (clickItemEmittier)="handleClickItem($event)" [event]="giveEvent(event, hour)"></app-item-calendar>
+        <app-item-calendar (clickItemEmittier)="handleClickItem($event)" [event]="giveEvent(day, hour)"></app-item-calendar>
       </td>
     </tr>
   </tbody>

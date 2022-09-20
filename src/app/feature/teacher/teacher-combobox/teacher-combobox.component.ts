@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Teacher } from '../models/teacher';
+import { TeacherService } from '../teacher.service';
 
 @Component({
   selector: 'app-teacher-combobox',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class TeacherComboboxComponent implements OnInit {
+  
+  @Output() emittierTeacher = new EventEmitter<string>()
 
-  constructor() { }
+  constructor(
+    private teacherService : TeacherService
+  ) { }
+   
+  public teachers : Teacher[] = [];
 
   ngOnInit(): void {
+  this.getTeachers()
+  }
+
+  private getTeachers(){
+   this.teacherService.getAllTeacher().subscribe(
+    (res)=> this.teachers = res
+   )
+  }
+  public handlerChangeTeacher(id : string){
+    this.emittierTeacher.emit(id);
   }
 
 }

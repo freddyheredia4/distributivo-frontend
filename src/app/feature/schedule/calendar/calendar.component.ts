@@ -14,8 +14,7 @@ import { ScheduleService } from '../schedule.service';
 })
 export class CalendarComponent implements OnInit {
   public events: ScheduleEvents = {
-    from : 0,
-    to : 0,
+    toFrom : [],
     hours : []
   };
   constructor(
@@ -59,15 +58,7 @@ export class CalendarComponent implements OnInit {
     });
      return !event ? this.setNoneEvent(strDay, hour.position) : event;
   }
-
-
-
-  counter(): number[] {
-    return Array.from(
-      { length: this.events.to - this.events.from },
-      (_, i) => i + this.events.from
-    );
-  }
+  
 
   private setNoneEvent(day: string, hour: string): Event {
     return {

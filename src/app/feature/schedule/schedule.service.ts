@@ -43,9 +43,10 @@ export class ScheduleService {
    //  skipLocationChange: true
    
    });
+
    
-  
 }
+
 downloadFile() {
   return this.http.get<Blob>(`${this.initialUrlSchedule}/export-to-excel`, 
   {

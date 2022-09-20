@@ -1,12 +1,7 @@
 <div class="flex p-2 gap-2 justify-between h-fit flex-wrap" >
     <div class="gap-2 flex flex-wrap" >
     <app-classroom-combobox (classroomSelectEvent)="onChangeClassroom($event)" ></app-classroom-combobox>
-    <select class="p-2 text-gray-600 outline-none border-none active:outline-none focus:outline-none" name="" id="">
-        <option value="">DOCENTE</option>
-        <option value="">Docente1</option>
-        <option value="">Docente2</option>
-        <option value="">Docente3</option>
-    </select>
+    <app-teacher-combobox (emittierTeacher)="onChangeTeacher($event)" ></app-teacher-combobox>
     <app-grade-combobox (changeGradeEmittier)="onChangeGrade($event)" ></app-grade-combobox>
     <select class="p-2 text-gray-600 outline-none border-none active:outline-none focus:outline-none" name="" id="">
         <option value="">LECTIVO</option>

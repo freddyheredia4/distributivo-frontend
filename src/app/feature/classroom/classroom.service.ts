@@ -85,11 +85,7 @@ export class ClassroomService {
     })
   }
 
-  reload(){
-    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['Your actualComponent']);
-  }); 
-  }
+
 
   addSuccess(title : string, message : string):void{
     this.ngxToastService.onSuccess(title,message)

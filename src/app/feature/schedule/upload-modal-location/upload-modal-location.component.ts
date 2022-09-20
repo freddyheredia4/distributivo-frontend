@@ -15,6 +15,8 @@ export class UploadModalScheduleComponent implements OnInit {
   
   public files : File[] = []; 
 
+  private reBool : boolean = true;
+
   ngOnInit(): void {
   }
 
@@ -23,10 +25,10 @@ export class UploadModalScheduleComponent implements OnInit {
     if(input.files?.length === 0) return this.scheduleService.addDanger('Error', 'Ningun archivo seleccionado')
     this.uploadExcelService.onFileSelected(input.files!, 'http://localhost:8080/api/schedule/import-excel')
     ?.subscribe(
-      (res)=>{
+      ()=>{
         this.scheduleService.addSuccess("Correcto", "Se ha importado correctamente");
         input.value = '';
-        this.scheduleService.addQueryParam({});
+        this.reload()
       },
       (err)=>{
         input.value = '';
@@ -35,6 +37,11 @@ export class UploadModalScheduleComponent implements OnInit {
     )
     
 
+  }
+
+  reload(){
+    this.reBool = !this.reBool
+    this.scheduleService.addQueryParam({r : this.reBool})
   }
   
   setFiles(files : File[] | null){

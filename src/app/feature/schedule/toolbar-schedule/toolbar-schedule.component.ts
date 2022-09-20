@@ -45,6 +45,10 @@ export class ToolbarScheduleComponent implements OnInit {
     this.scheduleService.addQueryParam({ grade : id });
   }
   
+  onChangeTeacher(id : string){
+    this.scheduleService.addQueryParam({ teacher : id });
+  }
+  
   handlerClickNextWeek(){
     console.log(`${this.dates.dateFrom.toLocaleDateString()} - ${this.dates.dateTo.toLocaleDateString()}`)
     this.dates.next()

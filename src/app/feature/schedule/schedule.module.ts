@@ -10,6 +10,7 @@ import { SharedCareerModule } from 'src/app/shared/career/carer.shared.module';
 import { SharedClassroomModule } from 'src/app/shared/classroom/classroom.shared.module';
 import { GradeComboboxComponent } from '../grade/grade-combobox/grade-combobox.component';
 import { UploadModalScheduleComponent } from './upload-modal-location/upload-modal-location.component';
+import { TeacherComboboxComponent } from '../teacher/teacher-combobox/teacher-combobox.component';
 
 const routes: Route[] = [
   {
@@ -31,7 +32,8 @@ const routes: Route[] = [
     ItemCalendarComponent,
     ToolbarScheduleComponent,
     GradeComboboxComponent,
-    UploadModalScheduleComponent
+    UploadModalScheduleComponent,
+    TeacherComboboxComponent
   ],
   providers: [],
 })

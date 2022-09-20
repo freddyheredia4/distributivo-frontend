@@ -1,5 +1,5 @@
-<label for="import-excel" class="btn btn-sm mr-1 btn-primary" >Importar</label>
 <!-- Put this part before </body> tag -->
+<button (click)="reload()" >presioname</button>
 <input type="checkbox" id="import-excel" class="modal-toggle" />
 <div class="modal">
 
@@ -14,5 +14,4 @@
     <label (click)="importSchedules(locationExcel)" class="btn btn-xs" for="import-excel" >Importar</label>
     <label (click)="locationExcel.value = '' " class="btn btn-xs" for="import-excel" >Cerrar</label>
   </div>
-   
 </div>
