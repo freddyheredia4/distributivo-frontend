@@ -1,5 +1,5 @@
 export interface ScheduleEvents {
-  toFrom : number[]
+  toFrom : string[],
   hours: Hour[];
 }
 
@@ -14,6 +14,7 @@ export interface Event {
   subject:   string;
   teacher:   Teacher;
   classroom: string;
+  grade : string
 }
 
 export interface Teacher {
@@ -23,6 +24,7 @@ export interface Teacher {
 
 export interface CordenatesEvent {
   day : string,
-  hour : string
+  hour : string,
+  created : boolean
 
 }

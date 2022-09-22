@@ -1,46 +1,73 @@
 <table class="w-full">
   <thead class="bg-zinc-600">
-    <tr class="flex text-white ">
-      <th class=" w-1-8 border-b border-r">Hora</th>
-      <th class=" w-1-8 border-b border-r">Lunes</th>
-      <th class=" w-1-8 border-b border-r">Martes</th>
-      <th class=" w-1-8 border-b border-r">Miercoles</th>
-      <th class=" w-1-8 border-b border-r">Jueves</th>
-      <th class=" w-1-8 border-b border-r">Viernes</th>
-      <th class=" border-b w-1-8 border-r">Sabado</th>
-        <th class=" w-1-8 border-b border-r">Domingo</th>
-      
+    <tr class="flex text-white">
+      <th class="w-1-8 border-b border-r">Hora</th>
+      <th class="w-1-8 border-b border-r">Lunes</th>
+      <th class="w-1-8 border-b border-r">Martes</th>
+      <th class="w-1-8 border-b border-r">Miercoles</th>
+      <th class="w-1-8 border-b border-r">Jueves</th>
+      <th class="w-1-8 border-b border-r">Viernes</th>
+      <th class="border-b w-1-8 border-r">Sabado</th>
+      <th class="w-1-8 border-b border-r">Domingo</th>
     </tr>
     <tr class="flex bg-slate-700 text-white">
       <td class="w-1-8 border-b border-r text-center"></td>
       <td
         *ngFor="let day of events.toFrom"
-        class=" w-1-8 border-b border-r text-center"
+        class="w-1-8 border-b border-r text-center"
       >
-        {{ day }}
+        {{ day.slice(8, 10) }}
       </td>
     </tr>
   </thead>
   <tbody>
-   
-    <tr *ngFor="let hour of events.hours" class="flex h-14 overflow-hidden text-gray-700 text-sm">
+    <tr
+      *ngFor="let hour of events.hours"
+      class="flex h-14 overflow-hidden text-gray-700 text-sm"
+    >
       <td class="w-1-8 border-b border-r text-center">{{ hour.position }}</td>
       <td
         *ngFor="let day of events.toFrom"
         class="w-1-8 border-b border-r p-0 text-center"
       >
-        <app-item-calendar (clickItemEmittier)="handleClickItem($event)" [event]="giveEvent(day, hour)"></app-item-calendar>
+        <app-item-calendar
+          (clickItemEmittier)="handleClickItem($event)"
+          [event]="giveEvent(day, hour)"
+        ></app-item-calendar>
       </td>
     </tr>
   </tbody>
 </table>
 
 <input type="checkbox" id="modal-view-event-calendar" class="modal-toggle" />
-<div class="modal" >
-  <div class="modal-box relative">
-    <label for="modal-view-event-calendar" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">{{currentEntity.subject}}</h3>
-    <p class=""><strong>Aula: </strong> {{currentEntity.classroom}}</p>
-     <p class=""><strong>Docente: </strong> {{currentEntity.teacher.name}}</p>
+<div class="modal">
+  <div class="modal-box w-96 h-60 scroll-ander invicible-scroll-ander leading-none relative">
+    <label
+    for="modal-view-event-calendar"
+    class="btn btn-sm btn-circle absolute right-2 top-2"
+    >✕</label
+  > 
+    <h3 class="text-lg font-bold border-b leading-none text-center">
+        {{ currentEntity.subject }}
+      </h3>
+ 
+  
+    <div class="w-full flex  justify-between">
+      <div class="mr-6 font-bold">
+        <p>Aula:</p>
+        <p>Docente:</p>
+        <p>Curso:</p>
+        <p>Fecha: </p> <p>Hora: </p> 
+      </div>
+      <div class="w-full">
+        <p>{{ currentEntity.classroom }}</p>
+        <p>{{ currentEntity.teacher.name }}</p>
+        <p>{{ currentEntity.grade }}</p>
+        <p>{{ currentEntity.day }}</p>
+        <p>{{ currentEntity.hour }}</p>
+      </div>
+    </div>
   </div>
 </div>
+
+<app-modal-schedule></app-modal-schedule>

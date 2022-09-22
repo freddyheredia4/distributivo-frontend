@@ -26,6 +26,7 @@ export class CalendarComponent implements OnInit {
     classroom: '',
     day: '',
     hour: '',
+    grade : '',
     subject: '',
     teacher: {
       name: '',
@@ -34,7 +35,7 @@ export class CalendarComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
+   
     this.route.queryParams.subscribe((params : Params)=>{
       this.getSchedule(params);
     });
@@ -47,22 +48,18 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  giveEvent(day: number, hour: Hour): Event {
-    let strDay = day.toString();
+  giveEvent(day: string, hour: Hour): Event {
    
 
-    const event = hour.events.find((value) =>{ 
-      let daySlice = (value?.day) ? value.day.slice(8,10) : '';
-      return daySlice == strDay
-    
-    });
-     return !event ? this.setNoneEvent(strDay, hour.position) : event;
+    const event = hour.events.find((value) =>value.day == day);
+     return !event ? this.setNoneEvent(day, hour.position) : event;
   }
   
 
   private setNoneEvent(day: string, hour: string): Event {
     return {
       classroom: '',
+      grade : '',
       day: day,
       hour: hour,
       subject: '',
@@ -74,27 +71,24 @@ export class CalendarComponent implements OnInit {
   }
 
   handleClickItem(item: CordenatesEvent) {
+    
     const index = this.events.hours.findIndex(
       (hour) => hour.position == item.hour
     );
-
-    this.events.hours[index].events.push({
-      classroom: '',
-      day: item.day,
-      hour: item.hour,
-      subject: '',
-      teacher: {
-        color: 'gray',
-        name: '',
-      },
-    });
 
     this.currentEntity =
       this.events.hours[index].events.find(
         (event) => event.day == item.day && event.hour == item.hour
       ) || this.currentEntity;
-
-    document.getElementById('label-modal-view-event-calendar')?.click();
+    if(item.created) document.getElementById('label-modal-view-event-calendar')?.click();
+    else {
+      this.scheduleService.addQueryParam({
+        hour : item.hour,
+        day : item.day
+      });
+      document.getElementById("modal-event-calendar")?.click()
+      console.log("lolol.o")
+    }
   }
 
   private generateQuerys(params : Params) {

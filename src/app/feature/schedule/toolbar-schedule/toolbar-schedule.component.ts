@@ -26,11 +26,12 @@ export class ToolbarScheduleComponent implements OnInit {
   }
   
   setParamsDay(){
+    const from = this.dates.dateFrom.toLocaleDateString().split('/');
+    const to = this.dates.dateTo.toLocaleDateString().split('/');
+    
     this.scheduleService.addQueryParam({
-     to : this.dates.to,
-     from : this.dates.from,
-     fd : this.dates.dateFrom.toISOString().split('T')[0],
-     td : this.dates.dateTo.toISOString().split('T')[0]
+     fd : `${from[2]}-${from[1]}-${from[0]}`,
+     td : `${to[2]}-${to[1]}-${to[0]}`
     })
   }
 

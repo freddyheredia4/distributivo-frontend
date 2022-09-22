@@ -51,7 +51,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     left: 0;
     top: 0;
     width: 100%;
-    background-color: rgb(34 211 238);
     transition: .5s ease;
     -webkit-transition: .5s ease;
 

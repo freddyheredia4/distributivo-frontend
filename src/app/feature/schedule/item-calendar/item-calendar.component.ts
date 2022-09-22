@@ -12,6 +12,7 @@ export class ItemCalendarComponent implements OnInit {
   @Input() event : Event = {
     classroom : '',
     hour : '',
+    grade : '',
     day : '',
     subject : '',
     teacher : {
@@ -25,12 +26,10 @@ export class ItemCalendarComponent implements OnInit {
 
   onClickItem(){
 
-    if(this.event.teacher.name.length === 0) return;
- 
     this.clickItemEmittier.emit({
       hour : this.event.hour,
-      day : this.event.day
-
+      day : this.event.day,
+      created : this.event.teacher.name.length !== 0
     });
   }
 
