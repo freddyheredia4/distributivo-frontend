@@ -23,6 +23,7 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   public currentEntity: Event = {
+    id : '',
     classroom: '',
     day: '',
     hour: '',
@@ -58,6 +59,7 @@ export class CalendarComponent implements OnInit {
 
   private setNoneEvent(day: string, hour: string): Event {
     return {
+      id : '',
       classroom: '',
       grade : '',
       day: day,
@@ -68,6 +70,15 @@ export class CalendarComponent implements OnInit {
         name: '',
       },
     };
+  }
+
+  public deleteEvent(){
+    this.scheduleService.deleteEvent(this.currentEntity.id).subscribe(
+      ()=> {
+        this.scheduleService.reload()
+        document.getElementById('modal-view-event-calendar')?.click()
+      }
+    )
   }
 
   handleClickItem(item: CordenatesEvent) {
@@ -87,7 +98,6 @@ export class CalendarComponent implements OnInit {
         day : item.day
       });
       document.getElementById("modal-event-calendar")?.click()
-      console.log("lolol.o")
     }
   }
 

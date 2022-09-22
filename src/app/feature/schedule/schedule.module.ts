@@ -11,6 +11,7 @@ import { GradeComboboxComponent } from '../grade/grade-combobox/grade-combobox.c
 import { UploadModalScheduleComponent } from './upload-modal-schedule/upload-modal-schedule.component';
 import { ModalScheduleComponent } from './modal-schedule/modal-schedule.component';
 import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
+import { CardsDistributiveSearchComponent } from '../distributive/cards-distributive-search/cards-distributive-search.component';
 
 const routes: Route[] = [
   {
@@ -34,7 +35,8 @@ const routes: Route[] = [
     ToolbarScheduleComponent,
     GradeComboboxComponent,
     UploadModalScheduleComponent,
-    ModalScheduleComponent
+    ModalScheduleComponent,
+    CardsDistributiveSearchComponent
   ],
   providers: [],
 })

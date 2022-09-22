@@ -28,7 +28,7 @@ export class UploadModalScheduleComponent implements OnInit {
       ()=>{
         this.scheduleService.addSuccess("Correcto", "Se ha importado correctamente");
         input.value = '';
-        this.reload()
+        this.scheduleService.reload()
       },
       (err)=>{
         input.value = '';
@@ -39,11 +39,7 @@ export class UploadModalScheduleComponent implements OnInit {
 
   }
 
-  reload(){
-    this.reBool = !this.reBool
-    this.scheduleService.addQueryParam({r : this.reBool})
-  }
-  
+
   setFiles(files : File[] | null){
     
     this.files = files ? files : [];

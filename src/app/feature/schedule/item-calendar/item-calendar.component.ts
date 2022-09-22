@@ -10,6 +10,7 @@ export class ItemCalendarComponent implements OnInit {
 
   constructor() { }
   @Input() event : Event = {
+    id : '',
     classroom : '',
     hour : '',
     grade : '',

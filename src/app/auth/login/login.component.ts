@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
         if (response.headers.get('Authorization')!=null){
           sessionStorage.setItem("seguridad_token", String(response.headers.get('Authorization')));
           sessionStorage.setItem("username", this.credential.username);
-          this.loggedIn = true;
-          sessionStorage.setItem("loggedIn","true");
-          this.router.navigate(["layout"]);
+      
         }
+        
       }
     )
-   
+    this.loggedIn = true;
+    sessionStorage.setItem("loggedIn","true");
+    this.router.navigate(["layout"]);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Event } from '../models/scheduleData';
+import { ActivatedRoute, Params } from '@angular/router';
+import { SaveEventDTO } from '../models/saveEventDTO';
+import { ScheduleService } from '../schedule.service';
 
 @Component({
   selector: 'app-modal-schedule',
@@ -12,27 +13,51 @@ import { Event } from '../models/scheduleData';
 export class ModalScheduleComponent implements OnInit {
   
   constructor(
-    private routed : ActivatedRoute
+    private routed : ActivatedRoute,
+    private scheduleService : ScheduleService
   ) { }
+ 
+  public currentEntity = this.getNullevent();
+  
 
   ngOnInit(): void {
-    this.routed.params.subscribe(
-      (params)=> {
-         this.currentEntity.day = params['day'] || '';
-         this.currentEntity.hour = params['hour'] || '';
-      }
+    this.routed.queryParams.subscribe(
+      (params)=> {this.setDayAndHour(params)
+      } 
     )
+  }
 
+  public save(){
+    this.scheduleService.save(this.currentEntity).subscribe(
+      () => this.scheduleService.reload()
+    );
   }
-  public currentEntity: Event = {
-    classroom: '',
-    day: '',
-    grade : '',
-    hour: '',
-    subject: '',
-    teacher: {
-      name: '',
-      color: '',
-    },
+
+  private setDayAndHour(params : Params){
+    console.log(params)
+    this.currentEntity.date = params['day'] || '';
+    this.currentEntity.hour = params['hour']  || '';
   }
+
+  public setOccupiedBy(id : string){
+    this.currentEntity.occupiedBy = id;
+  }
+
+  public setClassroom( id : string ){
+    this.currentEntity.classroom = id;
+  }
+
+  public setPeriod( id : string ){
+    this.currentEntity.schoolPeriod = id;
+  }
+
+  public getNullevent(): SaveEventDTO {
+    return {
+      classroom : '',
+      date : '',
+      hour : '',
+      occupiedBy : '',
+      schoolPeriod : '4'
+    }
+  }  
 }

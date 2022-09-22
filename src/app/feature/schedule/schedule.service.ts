@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgxToastService } from 'ngx-toast-notifier';
 import { Observable } from 'rxjs';
+import { SaveEventDTO } from './models/saveEventDTO';
 import { ScheduleEvents } from './models/scheduleData';
 
 @Injectable({
@@ -19,6 +20,8 @@ export class ScheduleService {
 
   ) { }
 
+  private reBool : boolean = true;
+
   private initialUrlSchedule = 'http://localhost:8080/api/schedule';
   
   private httpOptions = {
@@ -34,6 +37,11 @@ export class ScheduleService {
 
   }
 
+  public save(event : SaveEventDTO) {
+    return this.http.post(this.initialUrlSchedule, event, this.httpOptions)
+
+  }
+
   public addQueryParam(params : Params){
     this.router.navigate(["/layout/schedule"], {
      relativeTo: this.route,
@@ -45,6 +53,15 @@ export class ScheduleService {
    });
 
    
+}
+public reload(){
+  this.reBool = !this.reBool
+  this.addQueryParam({r : this.reBool})
+}
+
+
+public deleteEvent(id : string) {
+  return this.http.get(`${this.initialUrlSchedule}/delete/${id}`);
 }
 
 downloadFile() {

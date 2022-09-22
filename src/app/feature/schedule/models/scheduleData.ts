@@ -1,30 +1,30 @@
 export interface ScheduleEvents {
-  toFrom : string[],
+  toFrom: string[];
   hours: Hour[];
 }
 
 export interface Hour {
   position: string;
-  events:   Event[];
+  events: Event[];
 }
 
 export interface Event {
-  day:       string;
-  hour : string;
-  subject:   string;
-  teacher:   Teacher;
+  id: string;
+  day: string;
+  hour: string;
+  subject: string;
+  teacher: Teacher;
   classroom: string;
-  grade : string
+  grade: string;
 }
 
 export interface Teacher {
-  name:  string;
+  name: string;
   color: string;
 }
 
 export interface CordenatesEvent {
-  day : string,
-  hour : string,
-  created : boolean
-
+  day: string;
+  hour: string;
+  created: boolean;
 }
