@@ -1,22 +1,6 @@
 <div class="p-8 text-[#283c4d]">
     <app-toolbar-teacher [entityName]="currentEntity.name" (termEmitter)="findByName($event)"></app-toolbar-teacher>
     <div class="overflow-x-auto">
-
-        <table class="table table-compact w-full" >
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let subject of currentEntity.subject" >
-                    <td> {{subject.name}} </td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-
         <table class=" table table-compact w-full">
             <thead class="text-gray-500">
                 <tr>
@@ -47,7 +31,7 @@
                     </td>
                     <td class="w-2/12 flex flex-wrap justify-center">
                         <span>
-                            <label for="teacher-modal" [routerLink]="['/layout/teacher',teacher.id]"
+                            <label for="teacher-modal" [routerLink]="['/layout/teacher-list/',teacher.id]"
                                 class="btn btn-xs glass">
                                 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24"
                                     class="w-5 h-5 fill-black">

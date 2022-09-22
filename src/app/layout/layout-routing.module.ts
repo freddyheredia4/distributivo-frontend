@@ -10,10 +10,10 @@ import { TeacherListComponent } from '../feature/teacher/teacher-list/teacher-li
 import { CareerComponent } from '../feature/career/career.component';
 import { DistributivoDocenteComponent } from '../feature/distributivo-docente/distributivo-docente.component';
 import { DistibutivoDocenteFormComponent } from '../feature/distributivo-docente/distibutivo-docente-form/distibutivo-docente-form.component';
+import { ModalTeacherComponent } from '../feature/teacher/modal-teacher/modal-teacher.component';
 const routes: Routes = [
   {path: '', component:MainComponent ,
     children: [
-      {path: '', component:DashboardComponent},
       {path: 'person-form', component:PersonFormComponent},
       {path: 'person-form/:id', component:PersonFormComponent},
       {path: 'person-list', component:PersonListComponent},
@@ -22,10 +22,11 @@ const routes: Routes = [
       {path: 'location/:id', component : LocationComponent},
       {path: 'teacher', component: TeacherComponent},
       {path: 'teacher-list', component: TeacherListComponent},
-      {path: 'teacher/:id', component: TeacherComponent},
+      {path: 'teacher-list/:id', component: TeacherListComponent },
       {path: 'career', component: CareerComponent },
       {path: 'distributivo-docente', component: DistributivoDocenteComponent},
-      {path: 'distributivoForm', component: DistibutivoDocenteFormComponent }
+      {path: 'distributivoForm', component: DistibutivoDocenteFormComponent },
+      {path: 'distributivo-docente-form/:id', component: DistibutivoDocenteFormComponent }
     ]
   }
 ]

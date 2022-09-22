@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Teacher } from '../../db/models/teacher';
 import { TeacherService } from '../../db/services/teacher.service';
 import { SubjectService } from '../../db/services/subject.service';
-import { GradeService } from '../../db/services/grade.service';
-import { SchoolPeriodService } from '../../db/services/school-period.service';
 
 
 
@@ -45,7 +43,7 @@ export class TeacherListComponent implements OnInit {
     archived :false,
     grade: [],
     subject: [],
-    schoolPeriod : []
+    schoolPeriod: []
   };
 
   public findAll(): void {
@@ -69,13 +67,6 @@ export class TeacherListComponent implements OnInit {
     this.teacherService.findById(id).subscribe(
       (response) => {
         this.currentEntity = response;
-        this.currentEntity.subject.forEach(
-          (subject) => {
-            this.subjectService.findById(subject.id).subscribe(
-              (item) => subject.name = item.name 
-            )
-          }
-        )
       }
     )
   }

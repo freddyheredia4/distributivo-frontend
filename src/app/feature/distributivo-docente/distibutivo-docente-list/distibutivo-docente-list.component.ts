@@ -17,6 +17,19 @@ export class DistibutivoDocenteListComponent implements OnInit {
     this.findAll();
   }
 
+  currentEntity : Teacher = {
+    id: 0,
+    dni: '',
+    name: '',
+    lastname: '',
+    color: '',
+    email: '',
+    archived: true,
+    grade: [],
+    subject: [],
+    schoolPeriod: []
+  }
+
   teacherList : Teacher[] = [];
 
   public findAll() :void {
@@ -25,6 +38,12 @@ export class DistibutivoDocenteListComponent implements OnInit {
     )
   }
 
-
+  public findById(id : number): void {
+    this.teacherService.findById(id).subscribe(
+      (response) => {
+        this.currentEntity = response;
+      }
+    )
+  }
 
 }

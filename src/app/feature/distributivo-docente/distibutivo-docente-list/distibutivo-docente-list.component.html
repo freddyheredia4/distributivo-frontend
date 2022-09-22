@@ -30,7 +30,7 @@
                     <td>{{teacher.name}}</td>
                     <td>{{teacher.lastname}}</td>
                     <td>
-                        <a routerLink="/layout/distributivoForm" >
+                        <a [routerLink]="['/layout/distributivo-docente-form',teacher.id]">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 fill-cyan-700">
                                 <g id="_01_align_center" data-name="01 align center">
                                     <path
