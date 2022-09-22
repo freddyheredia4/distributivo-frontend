@@ -9,8 +9,8 @@ import { ToolbarScheduleComponent } from './toolbar-schedule/toolbar-schedule.co
 import { SharedClassroomModule } from 'src/app/shared/classroom/classroom.shared.module';
 import { GradeComboboxComponent } from '../grade/grade-combobox/grade-combobox.component';
 import { UploadModalScheduleComponent } from './upload-modal-schedule/upload-modal-schedule.component';
-import { TeacherComboboxComponent } from '../teacher/teacher-combobox/teacher-combobox.component';
 import { ModalScheduleComponent } from './modal-schedule/modal-schedule.component';
+import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
 
 const routes: Route[] = [
   {
@@ -24,6 +24,7 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     CommonModule,
     SharedClassroomModule,
+    SharedTeacherModule
   ],
   exports: [],
   declarations: [
@@ -33,7 +34,6 @@ const routes: Route[] = [
     ToolbarScheduleComponent,
     GradeComboboxComponent,
     UploadModalScheduleComponent,
-    TeacherComboboxComponent,
     ModalScheduleComponent
   ],
   providers: [],

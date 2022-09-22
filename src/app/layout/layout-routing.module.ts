@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -43,9 +42,17 @@ const routes: Routes = [
             (c) => c.UserModule
           ),
       },
+      {
+        path : 'teacher',
+        loadChildren : ()=>
+        import('../feature/teacher/teacher.module').then(
+          c=> c.TeacherModule
+        )
+      }
     ],
   },
 ];
+      
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

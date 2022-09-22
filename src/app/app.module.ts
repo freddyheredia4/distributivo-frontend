@@ -8,9 +8,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxToastNotifierModule } from 'ngx-toast-notifier';
-import { RoleComponent } from './feature/role/role.component';
-import { ComboboxRoleComponent } from './feature/role/combobox-role/combobox-role.component';
-import { TeacherComboboxComponent } from './feature/teacher/teacher-combobox/teacher-combobox.component';
 
 @NgModule({
   declarations: [

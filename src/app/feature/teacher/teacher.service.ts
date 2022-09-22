@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { Teacher } from './models/teacher';
 
@@ -17,7 +18,7 @@ export class TeacherService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      //'user': 'admin:123'
+      //'user`': 'admin:123'
     }),
   };
 
@@ -25,5 +26,26 @@ export class TeacherService {
     return this.http.get<Teacher[]>(`${this.initialUrlTeacher}/findAll`, this.httpOptions);
 
   }
+
+  private HttpOptions = {
+    headers: new HttpHeaders({"Content-type":"application/json"})
+  }
+
+  private url : string = "http://localhost:8080/api/teacher";
+
+  public findById(id : number): Observable<Teacher>{
+    return this.http.get<Teacher>(this.url+"/findById/"+id, this.HttpOptions);
+  }
+
+  public findAll(): Observable<Teacher[]>{
+    return this.http.get<Teacher[]>(this.url+"/findAll/", this.HttpOptions);
+}
+  
+ //public saveTeacher = (newLocation: Teacher): Observable<Teacher> => {
+  //  return this.http.post<Teacher>(this.url+"/save", newLocation,this.HttpOptions);
+  //};
+ 
+
+
 
 }

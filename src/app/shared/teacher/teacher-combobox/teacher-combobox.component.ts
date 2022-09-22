@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Teacher } from '../models/teacher';
-import { TeacherService } from '../teacher.service';
+import { Teacher } from '../../../feature/teacher/models/teacher';
+import { TeacherService } from '../../../feature/teacher/teacher.service';
 
 @Component({
   selector: 'app-teacher-combobox',
