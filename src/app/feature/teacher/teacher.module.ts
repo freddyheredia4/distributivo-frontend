@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
+import { DistibutivoDocenteDetalleComponent } from '../distibutivo-docente/distibutivo-docente-detalle/distibutivo-docente-detalle.component';
 import { ModalTeacherComponent } from './modal-teacher/modal-teacher.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 import { TeacherPaginationComponent } from './teacher-pagination/teacher-pagination.component';
@@ -13,18 +14,23 @@ import { UploadModalTeacherComponent } from './upload-modal-teacher/upload-modal
 
 const routes : Route[] = [
     {path: '', component: TeacherListComponent },
-    {path: ':id', component: TeacherListComponent },
+    {path: ':id', component: DistibutivoDocenteDetalleComponent },
 ]
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), SharedTeacherModule],
+    imports: [
+        RouterModule.forChild(routes), 
+        CommonModule, 
+        FormsModule, 
+        SharedTeacherModule],
     exports: [],
-    declarations: [TeacherComponent,
+    declarations: [
+        TeacherComponent,
         ModalTeacherComponent,
         TeacherListComponent,
         ToolbarTeacherComponent,
         TeacherPaginationComponent,
-    UploadModalTeacherComponent
+        UploadModalTeacherComponent
 
     ],
     providers: [],

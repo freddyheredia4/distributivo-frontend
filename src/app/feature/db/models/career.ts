@@ -1,7 +1,7 @@
 export interface Career{
     id : number,
     name : string,
-    duration : string,
+    duration : number,
     img : string,
     status : boolean
 }

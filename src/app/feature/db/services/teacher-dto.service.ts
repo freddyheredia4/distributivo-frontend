@@ -19,14 +19,24 @@ export class TeacherDtoService {
     })
   }
   
-  public url : string = "http://localhost:8080/api/teacherDto"
+  public url : string = "http://localhost:8080/api/distributive"
 
   public findAll(): Observable<TeacherDto[]>{
     return this.http.get<TeacherDto[]>(this.url+"/findAll")
   }
 
   public findByTeacherId( id : number ):Observable<TeacherDto>{
-    return this.http.get<TeacherDto>(this.url+"/findByTeacherId/"+id, this.httpOPtions)
+    return this.http.get<TeacherDto>(this.url+"/findByIdTeacher/"+id, this.httpOPtions)
   }
+
+  public findByIdDistributive(id:number):Observable<TeacherDto>{
+    return this.http.get<TeacherDto>(this.url+"/findByIdDistributive/"+id, this.httpOPtions);
+  }
+
+  public findByDni(dni : string):Observable<TeacherDto[]>{
+    return this.http.get<TeacherDto[]>(this.url+"/findByDni/"+dni, this.httpOPtions);
+  }
+
+
 
 }

@@ -10,6 +10,21 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
+
+      {
+        path: 'career', loadChildren: () =>
+          import("../feature/career/career.module").then(
+            (m) => m.CareerModule
+          )
+      },
+
+      {
+        path: 'distributivo-docente',
+        loadChildren: () =>
+          import('../feature/distibutivo-docente/distibutivo-docente.module').then(
+            (m) => m.DistibutivoDocenteModule
+          )
+      },
       {
         path: 'location',
         loadChildren: () =>
@@ -44,22 +59,22 @@ const routes: Routes = [
           ),
       },
       {
-        path : 'teacher-list',
-        loadChildren : ()=>
-        import('../feature/teacher/teacher.module').then(
-          c=> c.TeacherModule
-        )
+        path: 'teacher-list',
+        loadChildren: () =>
+          import('../feature/teacher/teacher.module').then(
+            c => c.TeacherModule
+          )
       }
     ],
   },
 ];
-      
-   
-    
+
+
+
 
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class LayoutRoutingModule {}
+export class LayoutRoutingModule { }
