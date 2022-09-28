@@ -57,21 +57,6 @@ export class CalendarComponent implements OnInit {
   }
   
 
-  private setNoneEvent(day: string, hour: string): Event {
-    return {
-      id : '',
-      classroom: '',
-      grade : '',
-      day: day,
-      hour: hour,
-      subject: '',
-      teacher: {
-        color: 'white',
-        name: '',
-      },
-    };
-  }
-
   public deleteEvent(){
     this.scheduleService.deleteEvent(this.currentEntity.id).subscribe(
       ()=> {
@@ -106,4 +91,18 @@ export class CalendarComponent implements OnInit {
     return querys
   };
 
+  private setNoneEvent(day: string, hour: string): Event {
+    return {
+      id : '',
+      classroom: '',
+      grade : '',
+      day: day,
+      hour: hour,
+      subject: '',
+      teacher: {
+        color: 'white',
+        name: '',
+      },
+    };
+  }
 }

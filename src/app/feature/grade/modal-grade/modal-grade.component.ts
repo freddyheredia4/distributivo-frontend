@@ -22,7 +22,6 @@ export class ModalGradeComponent implements OnInit {
   }
 
   currentId = '';
-  ngOnChanges(changes: SimpleChanges) {}
 
   public currentEntity: Grade = this.getClearGrade();
 

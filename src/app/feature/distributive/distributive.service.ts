@@ -22,7 +22,7 @@ export class DistributiveService {
   };
 
 
-  public searchByEmail(email : string) : Observable<Distributive[]>{
-    return this.http.get<Distributive[]>(`${this.initialUrlDistributive}/findByEmail/${email}`, this.httpOptions);
+  public searchByEmail(name : string) : Observable<Distributive[]>{
+    return this.http.get<Distributive[]>(`${this.initialUrlDistributive}/findByName/${name}`, this.httpOptions);
   }
 }

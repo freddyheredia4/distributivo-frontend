@@ -49,14 +49,15 @@ const routes: Routes = [
         import('../feature/teacher/teacher.module').then(
           c=> c.TeacherModule
         )
+      },
+      {
+        path : 'career',
+        loadChildren : ()=>import('../feature/career/career.module').then(c=>c.CareerModule)
       }
     ],
   },
 ];
       
-   
-    
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

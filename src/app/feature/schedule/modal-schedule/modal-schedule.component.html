@@ -1,17 +1,24 @@
 <input type="checkbox" id="modal-event-calendar" class="modal-toggle" />
 <div class="modal">
   <div
-    class="modal-box relative w-[400px] h-72 scroll-ander invicible-scroll-ander leading-none"
-  >
-  
-    <label
-      for="modal-event-calendar"
-      class="btn btn-sm btn-circle absolute right-2 top-2"
-      >✕</label
-    >
-    <h3 class="text-center font-bold border-b">Crear Evento</h3>
-    <app-classroom-combobox (classroomSelectEvent)="setClassroom($event)"></app-classroom-combobox>
-  <app-cards-distributive-search (distributiveEmittier)="setOccupiedBy($event)"></app-cards-distributive-search>
-    <label for="modal-event-calendar" (click)="save()" class="btn btn-sm" >Save</label>
+class="modal-box max-w-[1000px] flex flex-col relative bg-white w-[720px] h-fit scroll-ander invicible-scroll-ander leading-none"
+>
+
+<label
+  for="modal-event-calendar"
+  class="btn btn-sm btn-circle text-lg text-black absolute right-2 top-2"
+  >✕</label
+>
+<br>
+<br>
+
+<app-cards-distributive-search (distributiveEmittier)="setOccupiedBy($event)"></app-cards-distributive-search>
+
+<div class="flex w-full flex-wrap justify-between">
+  <app-classroom-combobox class="w-44" (classroomSelectEvent)="setClassroom($event)"></app-classroom-combobox>
+   <button class="btn btn-sm" > Anadir frecuencia </button>
   </div>
+<br>
+<label for="modal-event-calendar" (click)="save()" class="btn btn-sm" >Save</label>
+</div>
 </div>

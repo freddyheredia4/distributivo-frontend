@@ -12,6 +12,7 @@ import { UploadModalScheduleComponent } from './upload-modal-schedule/upload-mod
 import { ModalScheduleComponent } from './modal-schedule/modal-schedule.component';
 import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
 import { CardsDistributiveSearchComponent } from '../distributive/cards-distributive-search/cards-distributive-search.component';
+import { PickRepeatEventModalComponent } from './pick-repeat-event-modal/pick-repeat-event-modal.component';
 
 const routes: Route[] = [
   {
@@ -36,7 +37,8 @@ const routes: Route[] = [
     GradeComboboxComponent,
     UploadModalScheduleComponent,
     ModalScheduleComponent,
-    CardsDistributiveSearchComponent
+    CardsDistributiveSearchComponent,
+    PickRepeatEventModalComponent
   ],
   providers: [],
 })

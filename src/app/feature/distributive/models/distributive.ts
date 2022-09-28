@@ -6,4 +6,5 @@ export interface Distributive {
     grade:           string;
     subject:         string;
     period:          string;
+    color : string
 }

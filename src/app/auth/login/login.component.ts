@@ -22,18 +22,21 @@ export class LoginComponent implements OnInit {
   }
 
   singIn(): void{
+    console.log(this.credential);
     this.loginService.singIn(this.credential).subscribe(
+    
       (response: HttpResponse<Credenciales>) => {
         if (response.headers.get('Authorization')!=null){
           sessionStorage.setItem("seguridad_token", String(response.headers.get('Authorization')));
           sessionStorage.setItem("username", this.credential.username);
+          this.loggedIn = true;
+          sessionStorage.setItem("loggedIn","true");
+          this.router.navigate(['/layout/dashboard'])
       
         }
         
       }
     )
-    this.loggedIn = true;
-    sessionStorage.setItem("loggedIn","true");
-    this.router.navigate(["layout"]);
+   
   }
 }
