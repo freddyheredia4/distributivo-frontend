@@ -40,10 +40,7 @@ export class TeacherListComponent implements OnInit {
     dni : "",
     color : "",
     email : "",
-    archived :false,
-    grade: [],
-    subject: [],
-    schoolPeriod: []
+    archived :false
   };
 
   public findAll(): void {

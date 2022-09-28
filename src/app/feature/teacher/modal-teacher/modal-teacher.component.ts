@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { Teacher } from '../../db/models/teacher';
 import { TeacherService } from '../../db/services/teacher.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal-teacher',
@@ -24,9 +24,6 @@ export class ModalTeacherComponent implements OnInit {
     email: '',
     color: '',
     archived: true,
-    grade: [],
-    subject : [],
-    schoolPeriod : []
   }
 
   ngOnInit(): void {
@@ -57,29 +54,26 @@ export class ModalTeacherComponent implements OnInit {
           dni: "",
           color: "",
           email: "",
-          archived: true,
-          grade : [],
-          subject : [],
-          schoolPeriod : []
+          archived: true
         };
         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Peticion exitosa',
           showConfirmButton: false,
-          timer: 2000
+          timer: 850
         });
         this.router.navigate(["/layout/teacher-list"]);
       }
     )
   }
-  cancelar(){
+  cancelar() {
     Swal.fire({
       position: 'center',
       icon: 'error',
       title: 'Peticion Cancelada',
       showConfirmButton: false,
-      timer: 2000
+      timer: 850
     });
   }
 

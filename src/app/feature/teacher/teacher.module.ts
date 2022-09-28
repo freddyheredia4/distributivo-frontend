@@ -12,19 +12,24 @@ import { ToolbarTeacherComponent } from './toolbar-teacher/toolbar-teacher.compo
 import { UploadModalTeacherComponent } from './upload-modal-teacher/upload-modal-teacher.component';
 
 const routes : Route[] = [
-    {path: '', component: TeacherListComponent },
-    {path: ':id', component: TeacherListComponent },
+    {path: '', component: TeacherComponent },
+    {path: ':id', component: TeacherComponent },
 ]
 
 @NgModule({
-    imports: [CommonModule, FormsModule, RouterModule.forChild(routes), SharedTeacherModule],
+    imports: [
+        RouterModule.forChild(routes), 
+        CommonModule, 
+        FormsModule, 
+        SharedTeacherModule],
     exports: [],
-    declarations: [TeacherComponent,
+    declarations: [
+        TeacherComponent,
         ModalTeacherComponent,
         TeacherListComponent,
         ToolbarTeacherComponent,
         TeacherPaginationComponent,
-    UploadModalTeacherComponent
+        UploadModalTeacherComponent
 
     ],
     providers: [],

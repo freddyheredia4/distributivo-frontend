@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { GradeService } from '../grade.service';
-import { Grade } from '../models/grade';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { GradeService } from '../../../feature/grade/grade.service';
+import { Grade } from '../../../feature/grade/models/grade';
 
 @Component({
   selector: 'app-grade-combobox',
@@ -15,6 +15,7 @@ export class GradeComboboxComponent implements OnInit {
   @Output() changeGradeEmittier = new EventEmitter<string>()
   public grades : Grade[] = []; 
   
+  @Input() myClass = '';
 
   ngOnInit(): void {
     this.getGrades();

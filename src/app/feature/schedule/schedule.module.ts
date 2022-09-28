@@ -7,12 +7,13 @@ import { ItemCalendarComponent } from './item-calendar/item-calendar.component';
 import { ToolbarScheduleComponent } from './toolbar-schedule/toolbar-schedule.component';
 //import { ClassroomComboboxComponent } from '../classroom/classroom-combobox/classroom-combobox.component';
 import { SharedClassroomModule } from 'src/app/shared/classroom/classroom.shared.module';
-import { GradeComboboxComponent } from '../grade/grade-combobox/grade-combobox.component';
+import { GradeComboboxComponent } from '../../shared/grade/grade-combobox/grade-combobox.component';
 import { UploadModalScheduleComponent } from './upload-modal-schedule/upload-modal-schedule.component';
 import { ModalScheduleComponent } from './modal-schedule/modal-schedule.component';
 import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
 import { CardsDistributiveSearchComponent } from '../distributive/cards-distributive-search/cards-distributive-search.component';
 import { PickRepeatEventModalComponent } from './pick-repeat-event-modal/pick-repeat-event-modal.component';
+import { SharedGradeModule } from 'src/app/shared/grade/grade.shared.module';
 
 const routes: Route[] = [
   {
@@ -26,7 +27,8 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     CommonModule,
     SharedClassroomModule,
-    SharedTeacherModule
+    SharedTeacherModule,
+    SharedGradeModule
   ],
   exports: [],
   declarations: [
@@ -34,7 +36,6 @@ const routes: Route[] = [
     CalendarComponent,
     ItemCalendarComponent,
     ToolbarScheduleComponent,
-    GradeComboboxComponent,
     UploadModalScheduleComponent,
     ModalScheduleComponent,
     CardsDistributiveSearchComponent,

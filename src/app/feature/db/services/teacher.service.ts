@@ -19,6 +19,11 @@ export class TeacherService {
   }
 
   private url : string = "http://localhost:8080/api/teacher";
+  private initialUrlTeacher = 'http://localhost:8080/api/teacher';
+
+  public getAllTeacher() : Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(`${this.initialUrlTeacher}/findAll`, this.HttpOptions);
+  }
 
   public findById(id : number): Observable<Teacher>{
     return this.http.get<Teacher>(this.url+"/findById/"+id, this.HttpOptions);

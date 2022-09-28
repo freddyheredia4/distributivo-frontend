@@ -15,6 +15,7 @@ export class ComboboxCareerComponent implements OnInit {
 
   @Output() careerSelectEvent  = new EventEmitter<string>()
   @Input() careerId : string =  '';
+  @Input() myClass = '';
    
   public careers : Career[] = [];
   ngOnInit(): void {
