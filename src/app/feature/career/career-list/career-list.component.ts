@@ -49,7 +49,8 @@ export class CareerListComponent implements OnInit {
     name : "",
     duration : 0,
     img : "",
-    status : true
+    status : true,
+    code : ""
   }
 
   public findById( id : number ):void{

@@ -9,13 +9,12 @@ import { DistibutivoDocenteToolbarComponent } from './distibutivo-docente-toolba
 import { DistibutivoDocenteGenerateComponent } from './distibutivo-docente-generate/distibutivo-docente-generate.component';
 import { DistibutivoDocenteComboboxComponent } from './distibutivo-docente-combobox/distibutivo-docente-combobox.component';
 import { DistibutivoDocenteDetalleComponent } from './distibutivo-docente-detalle/distibutivo-docente-detalle.component';
+import { DistributivoModalAddComponent } from './distributivo-modal-add/distributivo-modal-add.component'; 
 
 const routes : Route[] = [
   
   { path: '', component : DistibutivoDocenteListComponent},
   { path: ':id', component: DistibutivoDocenteListComponent },
-  { path: 'distibutivo-detalle', component: DistibutivoDocenteDetalleComponent },
-  { path: 'distibutivo-detalle:id', component: DistibutivoDocenteDetalleComponent }
 ]
 
 @NgModule({
@@ -26,7 +25,8 @@ const routes : Route[] = [
     DistibutivoDocenteToolbarComponent,
     DistibutivoDocenteGenerateComponent,
     DistibutivoDocenteComboboxComponent,
-    DistibutivoDocenteDetalleComponent
+    DistibutivoDocenteDetalleComponent,
+    DistributivoModalAddComponent
   ],
   imports: [RouterModule.forChild(routes),
     CommonModule,

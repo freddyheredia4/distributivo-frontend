@@ -3,5 +3,6 @@ export interface Career{
     name : string,
     duration : number,
     img : string,
-    status : boolean
+    status : boolean,
+    code : string
 }

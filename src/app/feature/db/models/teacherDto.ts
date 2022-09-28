@@ -1,9 +1,17 @@
 export interface TeacherDto{
     id              : number,
+    teacherid       : number,
     teacherCedula   : string,
-    teacher         : string,
+    teacherNombre   : string,
     teacherApellido : string,
-    grade           : string,
-    subject         : string,
-    period          : string,
+    gradeid         : number,
+    cursoName       : string,
+    subjectid       : number,
+    asignaturaName  : string,
+    asignaturaCode  : string,
+    perioodid       : number,
+    periodName      : string,
+    careeid         : number,
+    careerName      : string,
+    careerCode      : string
 }

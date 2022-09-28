@@ -1,0 +1,43 @@
+<input type="checkbox" id="distributive-new" class="modal-toggle" />
+<label for="distributive-new" class="modal cursor-pointer">
+  <label class="modal-box relative w-7/12 max-w-screen-2xl rounded-md  text-[#283c4d]" for="">
+    <h1 class="text-center text-slate-500" >Distributivo</h1>
+    <div class="flex justify-between mb-5">
+      <select [(ngModel)]="currentEntity.teacher" class="select select-bordered focus:outline-none select-sm focus:border-sky-700 bg-indigo-100 w-2/4 max-w-xs">
+        <option disabled selected>Docente</option>
+        <option>3</option>
+        <option>1</option>
+        <option>2</option>
+      </select>
+      <select [(ngModel)]="currentEntity.schoolTime" class="select select-bordered focus:outline-none focus:border-sky-700 bg-indigo-100  select-sm w-2/4 max-w-xs">
+        <option disabled selected>Carreta</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </div>
+    <div class="flex justify-between mb-5">
+      <select [(ngModel)]="currentEntity.course" class="select select-bordered focus:outline-none focus:border-sky-700 bg-indigo-100  select-sm w-2/4 max-w-xs">
+        <option disabled selected>Periodo lectivo</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <select [(ngModel)]="currentEntity.grade" class="select select-bordered focus:outline-none focus:border-sky-700 bg-indigo-100 select-sm w-2/4 max-w-xs">
+        <option disabled selected>Asignatura</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </div>
+    <div class="flex justify-center mb-5">
+      <select [(ngModel)]="currentEntity.career" class="select select-bordered focus:outline-none select-sm focus:border-sky-700 bg-indigo-100 w-2/4 max-w-xs">
+        <option disabled selected>Curso</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </div>
+    
+  </label>
+</label>

@@ -61,19 +61,19 @@ export class ModalTeacherComponent implements OnInit {
           icon: 'success',
           title: 'Peticion exitosa',
           showConfirmButton: false,
-          timer: 2000
+          timer: 850
         });
         this.router.navigate(["/layout/teacher-list"]);
       }
     )
   }
-  cancelar(){
+  cancelar() {
     Swal.fire({
       position: 'center',
       icon: 'error',
       title: 'Peticion Cancelada',
       showConfirmButton: false,
-      timer: 2000
+      timer: 850
     });
   }
 

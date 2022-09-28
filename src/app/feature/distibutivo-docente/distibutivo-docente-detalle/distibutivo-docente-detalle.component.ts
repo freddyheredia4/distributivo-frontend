@@ -35,12 +35,20 @@ export class DistibutivoDocenteDetalleComponent implements OnInit {
 
   currentEntity : TeacherDto = {
     id: 0,
-    teacherCedula: '',
-    teacher: '',
-    teacherApellido: '',
-    grade: '',
-    subject: '',
-    period: ''
+    teacherNombre: "",
+    teacherApellido: "",
+    teacherCedula: "",
+    gradeid: 0,
+    perioodid: 0,
+    subjectid: 0,
+    teacherid: 0,
+    cursoName: '',
+    asignaturaName: '',
+    asignaturaCode: '',
+    periodName: '',
+    careeid: 0,
+    careerName: '',
+    careerCode: ''
   }
 
   public findByIdTeacher(id : number):void{

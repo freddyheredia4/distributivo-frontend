@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SchoolPeriod } from '../../db/models/schoolPeriod';
 import { SchoolPeriodService } from '../../db/services/school-period.service';
 import { Career } from '../../db/models/career';
 import { CareerService } from '../../db/services/career.service';
-import { observable } from 'rxjs';
+
+
 @Component({
   selector: 'app-distibutivo-docente-combobox',
   templateUrl: './distibutivo-docente-combobox.component.html',
@@ -29,5 +30,17 @@ export class DistibutivoDocenteComboboxComponent implements OnInit {
     this.careerService.findAll().subscribe(
       (response) => this.careerList = response
     )
+  }
+
+  @Output() termEmitterPeriod = new EventEmitter<string>();
+
+  public onInputPeriod(periodo : string){
+    this.termEmitterPeriod.emit(periodo);
+  }
+
+  @Output() termEmitterCareer = new EventEmitter<string>();
+
+  public onInputCareer(career : string):void{
+    this.termEmitterCareer.emit(career);
   }
 }

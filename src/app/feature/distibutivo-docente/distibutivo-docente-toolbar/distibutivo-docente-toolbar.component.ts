@@ -12,9 +12,19 @@ export class DistibutivoDocenteToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Output() termEmiter = new EventEmitter<string>();
+  @Output() termEmitterDni = new EventEmitter<string>();
+  @Output() termEmitterName = new EventEmitter<string>();
+  @Output() termEmitterLastname = new EventEmitter<string>();
 
-  public onInput(dni : string){
-    this.termEmiter.emit(dni);
+  public onInputDni(dni : string){
+    this.termEmitterDni.emit(dni);
+  }
+
+  public onInputName(name : string){
+    this.termEmitterName.emit(name);
+  }
+
+  public onInputLastname(lastname : string){
+    this.termEmitterLastname.emit(lastname);
   }
 }

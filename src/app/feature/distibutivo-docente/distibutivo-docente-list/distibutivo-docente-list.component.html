@@ -1,5 +1,12 @@
-<app-distibutivo-docente-combobox></app-distibutivo-docente-combobox>
-<app-distibutivo-docente-toolbar (termEmiter)="findByDni($event)" ></app-distibutivo-docente-toolbar>
+<app-distibutivo-docente-combobox
+(termEmitterPeriod)="findByPeriodoName($event)"
+(termEmitterCareer)="findByCareerName($event)"
+></app-distibutivo-docente-combobox>
+<app-distibutivo-docente-toolbar 
+(termEmitterDni)="findByTeacherDni($event)"
+(termEmitterName)="findByTeacherName($event)"
+(termEmitterLastname)="findByTeacherLastname($event)"
+></app-distibutivo-docente-toolbar>
 <table class="table table-compact w-full text-[#283c4d]">
     <thead>
         <tr>
@@ -24,7 +31,7 @@
     <tbody>
         <tr *ngFor="let distributive of teacherDtoList">
             <td>{{distributive.teacherCedula}}</td>
-            <td>{{distributive.teacher}}</td>
+            <td>{{distributive.teacherNombre}}</td>
             <td>{{distributive.teacherApellido}}</td>
             <td>
                 

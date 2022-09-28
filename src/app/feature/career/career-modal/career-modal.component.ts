@@ -30,7 +30,8 @@ export class CareerModalComponent implements OnInit {
     name: "",
     duration: 0,
     img: "",
-    status: true
+    status: true,
+    code : ""
 
 
   }
@@ -43,7 +44,8 @@ export class CareerModalComponent implements OnInit {
           name: "",
           duration: 0,
           img: '',
-          status: true
+          status: true,
+          code : ""
         }
       }
     )
