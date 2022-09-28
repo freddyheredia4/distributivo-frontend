@@ -36,8 +36,10 @@ export class CalendarComponent implements OnInit {
   };
 
   ngOnInit(): void {
-   
+   if(this.events.hours.length > 0) return;
+
     this.route.queryParams.subscribe((params : Params)=>{
+      if(!params['fd'] || !params['td']) return
       this.getSchedule(params);
     });
   
