@@ -16,12 +16,10 @@ class FromToDay  {
         this.dateFrom.setDate(this.dateFrom.getDate() + 7);
         this.dateTo.setDate(this.dateTo.getDate() + 7);
     
-        console.log(`${this.dateFrom.toLocaleDateString()} - ${this.dateTo.toLocaleDateString()} `)
     }
     redo ()  {
         this.dateFrom.setDate(this.dateFrom.getDate() - 7);
         this.dateTo.setDate(this.dateTo.getDate() - 7);
-        console.log(`${this.dateFrom.toLocaleDateString()} - ${this.dateTo.toLocaleDateString()} `)
 
     }
 

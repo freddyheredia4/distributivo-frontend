@@ -5,15 +5,20 @@ import { ScheduleComponent } from './schedule.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ItemCalendarComponent } from './item-calendar/item-calendar.component';
 import { ToolbarScheduleComponent } from './toolbar-schedule/toolbar-schedule.component';
-//import { ClassroomComboboxComponent } from '../classroom/classroom-combobox/classroom-combobox.component';
 import { SharedClassroomModule } from 'src/app/shared/classroom/classroom.shared.module';
-import { GradeComboboxComponent } from '../../shared/grade/grade-combobox/grade-combobox.component';
 import { UploadModalScheduleComponent } from './upload-modal-schedule/upload-modal-schedule.component';
 import { ModalScheduleComponent } from './modal-schedule/modal-schedule.component';
 import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
 import { CardsDistributiveSearchComponent } from '../distributive/cards-distributive-search/cards-distributive-search.component';
 import { PickRepeatEventModalComponent } from './pick-repeat-event-modal/pick-repeat-event-modal.component';
 import { SharedGradeModule } from 'src/app/shared/grade/grade.shared.module';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingScheduleComponent } from './loading-schedule/loading-schedule.component';
+
 
 const routes: Route[] = [
   {
@@ -28,10 +33,18 @@ const routes: Route[] = [
     CommonModule,
     SharedClassroomModule,
     SharedTeacherModule,
-    SharedGradeModule
+    SharedGradeModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatProgressSpinnerModule
+    
+    
+    
   ],
   exports: [],
   declarations: [
+  
     ScheduleComponent,
     CalendarComponent,
     ItemCalendarComponent,
@@ -39,8 +52,11 @@ const routes: Route[] = [
     UploadModalScheduleComponent,
     ModalScheduleComponent,
     CardsDistributiveSearchComponent,
-    PickRepeatEventModalComponent
+    PickRepeatEventModalComponent,
+    DatePickerComponent,
+   
   ],
   providers: [],
+  bootstrap : []
 })
 export class ScheduleModule {}

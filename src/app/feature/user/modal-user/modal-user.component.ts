@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../models/user';
 import { UserRole } from '../../role/models/userRole';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modal-user',
@@ -12,7 +13,8 @@ import { UserRole } from '../../role/models/userRole';
 export class ModalUserComponent implements OnChanges  {
    
   constructor( private UserService : UserService,
-  private router : Router ) { }
+  private router : Router,
+  private snackbar : MatSnackBar ) { }
   
   @Input() currentId = '';
 
@@ -35,8 +37,7 @@ export class ModalUserComponent implements OnChanges  {
         this.currentEntity = res;
       },
       (err)=>{
-        this.UserService.addDanger('Error', 'Error al buscar el usuario')
-        console.error(err);
+        this.snackbar.open('Hubo un error al guardar el curso ❌')
       }
     )
 
@@ -57,14 +58,14 @@ export class ModalUserComponent implements OnChanges  {
     if(!this.validate()){
      
       return this.UserService.saveUser(this.currentEntity).subscribe(
-        (res)=>{
-          this.UserService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
+        ()=>{
+          this.snackbar.open("Se ha importado correctamente ​✅​");;
           this.reload();
         },
-        (err)=> this.UserService.addDanger('Error', 'Error al guardar la ubicacion')
+        ()=>  this.snackbar.open( 'Error al hacer la importacion ​​❌')
         )
     }
-    this.UserService.addDanger('Error', 'Algunos campos no cumplen con el estandar')
+    this.snackbar.open( 'Error al hacer la importacion ​​❌')
 
   }
 

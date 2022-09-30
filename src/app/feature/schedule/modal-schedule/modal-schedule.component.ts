@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
+import { RangeOptEvent } from '../models/rangeOptEvent';
 import { SaveEventDTO } from '../models/saveEventDTO';
 import { ScheduleService } from '../schedule.service';
 
@@ -14,7 +16,8 @@ export class ModalScheduleComponent implements OnInit {
   
   constructor(
     private routed : ActivatedRoute,
-    private scheduleService : ScheduleService
+    private scheduleService : ScheduleService,
+    private snackBar : MatSnackBar
   ) { }
  
   public currentEntity = this.getNullevent();
@@ -27,14 +30,46 @@ export class ModalScheduleComponent implements OnInit {
     )
   }
 
-  public save(){
+  public saveOrSaveRange(){
+    if(this.verifyIfIsRange())this.saveRange()
+    else this.save();
+  
+  }
+
+  private save(){
     this.scheduleService.save(this.currentEntity).subscribe(
-      () => this.scheduleService.reload()
+      () => {
+        this.snackBar.open('Se han guardado el evento ✅​')
+        this.scheduleService.reload()
+      },()=>this.snackBar.open('Se han guardado el evento ❌​​')
     );
+
+  }
+
+  private saveRange(){
+    this.scheduleService.saveRange(this.currentEntity).subscribe(
+      () => {
+        this.snackBar.open('Se han guardado los eventos ✅​')
+        this.scheduleService.reload()
+      },()=>this.snackBar.open('Se han guardado los eventos ❌​​')
+    );
+
+  }
+
+
+  public setRange(rangeOpt : RangeOptEvent){
+    this.currentEntity.rangeOpt = rangeOpt;
+  }
+
+  private verifyIfIsRange() : boolean{
+    return this.currentEntity?.rangeOpt && this.currentEntity.rangeOpt.days.some(day => day.select)
+    && !!this.currentEntity.rangeOpt.start && !!this.currentEntity.rangeOpt.start
+    ? true
+    :false;
+    
   }
 
   private setDayAndHour(params : Params){
-    console.log(params)
     this.currentEntity.date = params['day'] || '';
     this.currentEntity.hour = params['hour']  || '';
   }
@@ -51,13 +86,14 @@ export class ModalScheduleComponent implements OnInit {
     this.currentEntity.schoolPeriod = id;
   }
 
+
   public getNullevent(): SaveEventDTO {
     return {
       classroom : '',
       date : '',
       hour : '',
       occupiedBy : '',
-      schoolPeriod : '4'
-    }
+      schoolPeriod : '4',
+      rangeOpt : null
   }  
-}
+  }}

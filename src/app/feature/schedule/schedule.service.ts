@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NgxToastService } from 'ngx-toast-notifier';
 import { Observable } from 'rxjs';
 import { SaveEventDTO } from './models/saveEventDTO';
 import { ScheduleEvents } from './models/scheduleData';
@@ -15,7 +14,6 @@ export class ScheduleService {
    private http : HttpClient,
    private route: ActivatedRoute,
    private router: Router,
-   private ngxToastService : NgxToastService
 
 
   ) { }
@@ -39,6 +37,11 @@ export class ScheduleService {
 
   public save(event : SaveEventDTO) {
     return this.http.post(this.initialUrlSchedule, event, this.httpOptions)
+
+  }
+
+  public saveRange(range : SaveEventDTO):Observable<void>{
+    return this.http.post<void>(`${this.initialUrlSchedule}/range`, range, this.httpOptions)
 
   }
 
@@ -76,19 +79,5 @@ submitExcel(){
   
 } 
 
-addSuccess(title : string, message : string):void{
-  this.ngxToastService.onSuccess(title,message)
-}
 
-addInfo(title : string, message : string):void{
-  this.ngxToastService.onInfo(title,message)
-}
-
-addWarning(title:string, message : string):void{
-  this.ngxToastService.onWarning(title,message)
-}
-
-addDanger(title : string, message : string):void{
-  this.ngxToastService.onDanger(title,message)
-}
 }

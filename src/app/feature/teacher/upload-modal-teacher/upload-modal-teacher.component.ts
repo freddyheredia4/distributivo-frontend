@@ -20,15 +20,12 @@ export class UploadModalTeacherComponent implements OnInit {
 
   importTeacher(files: FileList | null) {
 
-    if (files?.length === 0) return console.log('Error', 'Ningun archivo seleccionado')
+    if (files?.length === 0) return 
     this.uploadExcelService.onFileSelected(files!, 'http://localhost:8080/api/teacher/import-excel')
       ?.subscribe(
         (res) => {
-          console.log("Correcto", "Se ha importado correctamente");
         },
         (err) => {
-          console.log('err')
-          console.log('Error', 'Error al hacer la importacion')
         }
       )
 

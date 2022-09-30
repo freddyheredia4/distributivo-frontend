@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DowloandExcelService } from 'src/app/excel/dowloand-excel.service';
 import { LocationService } from '../location.service';
 
@@ -7,29 +8,30 @@ import { LocationService } from '../location.service';
   templateUrl: './upload-modal-location.component.html',
   styleUrls: []
 })
-export class UploadModalLocationComponent implements OnInit {
+export class UploadModalLocationComponent {
 
   constructor(private dowloandExcelService : DowloandExcelService,
     private locationService : LocationService,
-    private uploadExcelService : DowloandExcelService) { }
+    private uploadExcelService : DowloandExcelService,
+    private snackbar : MatSnackBar) { }
   
   public files : File[] = []; 
 
-  ngOnInit(): void {
-  }
 
-  importLocations(input : HTMLInputElement ){
+
+  importLocations(input : HTMLInputElement ) : any{
     
-    if(input.files?.length === 0) return this.locationService.addDanger('Error', 'Ningun archivo seleccionado')
+    if(input.files?.length == 0) return this.snackbar.open('Hubo un error al guardar el curso ❌')
     this.uploadExcelService.onFileSelected(input.files!, 'http://localhost:8080/api/location/import-excel')
     ?.subscribe(
-      (res)=>{
-        this.locationService.addSuccess("Correcto", "Se ha importado correctamente");
+      ()=>{
+        this.snackbar.open('Se han importado correctamente los curso ')
+       
         input.value = '';
       },
-      (err)=>{
+      ()=>{
         input.value = '';
-        this.locationService.addDanger('Error', 'Error al hacer la importacion')
+        this.snackbar.open('Hubo un error al guardar el curso ❌')
       }
     )
     

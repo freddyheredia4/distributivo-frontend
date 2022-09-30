@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DowloandExcelService } from 'src/app/excel/dowloand-excel.service';
 import { ScheduleService } from '../schedule.service';
 
@@ -7,32 +8,29 @@ import { ScheduleService } from '../schedule.service';
   templateUrl: './upload-modal-schedule.component.html',
   styleUrls: []
 })
-export class UploadModalScheduleComponent implements OnInit {
+export class UploadModalScheduleComponent{
 
   constructor(private dowloandExcelService : DowloandExcelService,
     private scheduleService : ScheduleService,
-    private uploadExcelService : DowloandExcelService) { }
+    private uploadExcelService : DowloandExcelService,
+    private snackbar : MatSnackBar) { }
   
   public files : File[] = []; 
 
-  private reBool : boolean = true;
 
-  ngOnInit(): void {
-  }
-
-  importSchedules(input : HTMLInputElement ){
+  importSchedules(input : HTMLInputElement ) :any{
     
-    if(input.files?.length === 0) return this.scheduleService.addDanger('Error', 'Ningun archivo seleccionado')
+    if(input.files?.length === 0) return this.snackbar.open('Ningun archivo seleccionado ❌')
     this.uploadExcelService.onFileSelected(input.files!, 'http://localhost:8080/api/schedule/import-excel')
     ?.subscribe(
       ()=>{
-        this.scheduleService.addSuccess("Correcto", "Se ha importado correctamente");
+        this.snackbar.open("Se ha importado correctamente ​✅​");
         input.value = '';
         this.scheduleService.reload()
       },
       (err)=>{
         input.value = '';
-        this.scheduleService.addDanger('Error', 'Error al hacer la importacion')
+        this.snackbar.open( 'Error al hacer la importacion ​​❌')
       }
     )
     

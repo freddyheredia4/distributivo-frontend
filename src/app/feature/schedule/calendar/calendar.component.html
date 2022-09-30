@@ -1,20 +1,20 @@
-<table class="w-full">
-  <thead class="bg-zinc-600">
-    <tr class="flex text-white">
-      <th class="w-1-8 border-b border-r">Hora</th>
-      <th class="w-1-8 border-b border-r">Lunes</th>
-      <th class="w-1-8 border-b border-r">Martes</th>
-      <th class="w-1-8 border-b border-r">Miercoles</th>
-      <th class="w-1-8 border-b border-r">Jueves</th>
-      <th class="w-1-8 border-b border-r">Viernes</th>
-      <th class="border-b w-1-8 border-r">Sabado</th>
-      <th class="w-1-8 border-b border-r">Domingo</th>
+<table *ngIf="!loading || events.hours.length != 0" class="w-full border-l">
+  <thead class="bg-zinc-100">
+    <tr class="flex text-gray-600">
+      <th class="w-1-8 h-10 flex justify-center items-center border-b border-r">Hora</th>
+      <th class="w-1-8 border-b flex justify-center items-center border-r">Lunes</th>
+      <th class="w-1-8 border-b flex justify-center items-center border-r">Martes</th>
+      <th class="w-1-8 border-b flex justify-center items-center border-r">Miercoles</th>
+      <th class="w-1-8 border-b flex justify-center items-center border-r">Jueves</th>
+      <th class="w-1-8 border-b flex justify-center items-center border-r">Viernes</th>
+      <th class="border-b w-1-8 flex justify-center items-center border-r">Sabado</th>
+      <th class="w-1-8 border-b flex justify-center items-center border-r">Domingo</th>
     </tr>
-    <tr class="flex bg-slate-700 text-white">
-      <td class="w-1-8 border-b border-r text-center"></td>
+    <tr class="flex bg-zinc-100 text-black ">
+      <td class="w-1-8 border-b flex justify-center items-center border-r"></td>
       <td
         *ngFor="let day of events.toFrom"
-        class="w-1-8 border-b border-r text-center"
+        class="w-1-8 border-b flex justify-center items-center border-r"
       >
         {{ day.slice(8, 10) }}
       </td>
@@ -25,7 +25,7 @@
       *ngFor="let hour of events.hours"
       class="flex h-14 overflow-hidden text-gray-700 text-sm"
     >
-      <td class="w-1-8 border-b border-r text-center">{{ hour.position }}</td>
+      <td class="w-1-8 border-b border-r flex items-center justify-center">{{ hour.position }}</td>
       <td
         *ngFor="let day of events.toFrom"
         class="w-1-8 border-b border-r p-0 text-center"
@@ -49,9 +49,8 @@
   > 
     <h3 class="text-lg font-bold border-b leading-none text-center">
         {{ currentEntity.subject }}
-      </h3>
+    </h3>
  
-  
     <div class="w-full flex  justify-between">
       <div class="mr-6 font-bold">
         <p>Aula:</p>
@@ -88,5 +87,8 @@
     </div>
   </div>
 </div>
-
 <app-modal-schedule></app-modal-schedule>
+
+<div *ngIf="loading && events.hours.length == 0" class="w-full h-[560px] flex  items-center justify-center" >
+  <mat-spinner></mat-spinner>
+  <div>

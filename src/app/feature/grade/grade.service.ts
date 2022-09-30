@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Grade } from './models/grade';
 import { GradeDto } from './models/gradeDto';
-import { NgxToastService } from 'ngx-toast-notifier';
 import { Career } from './models/career';
 import { GradeForCareer } from './models/gradeForCareer';
 import { Router } from '@angular/router';
@@ -14,7 +13,6 @@ import { Router } from '@angular/router';
 export class GradeService {
 
   constructor( private http : HttpClient,
-    private ngxToastService : NgxToastService,
     private router : Router ) { }
 
   public listGrades: GradeForCareer[] =[]
@@ -105,19 +103,4 @@ export class GradeService {
     
   } 
 
-  addSuccess(title : string, message : string):void{
-    this.ngxToastService.onSuccess(title,message)
-  }
-
-  addInfo(title : string, message : string):void{
-    this.ngxToastService.onInfo(title,message)
-  }
-
-  addWarning(title:string, message : string):void{
-    this.ngxToastService.onWarning(title,message)
-  }
-
-  addDanger(title : string, message : string):void{
-    this.ngxToastService.onDanger(title,message)
-  }
 }

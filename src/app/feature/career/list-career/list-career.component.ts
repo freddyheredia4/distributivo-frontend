@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Career } from '../models/career';
 import { CareerService } from '../career.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-career',
@@ -8,7 +9,10 @@ import { CareerService } from '../career.service';
   styleUrls: [],
 })
 export class ListCareerComponent implements OnInit {
-  constructor(private careerService: CareerService) {}
+  constructor(
+    private careerService: CareerService,
+    private snackbar: MatSnackBar
+  ) {}
 
   public listCareers: Career[] = [];
 
@@ -20,12 +24,11 @@ export class ListCareerComponent implements OnInit {
 
   private getCareers() {
     this.careerService.findAll().subscribe((res) => {
-      res.forEach((value, index )=>{
+      res.forEach((value, index) => {
         res[index].img = this.resizeImage(value.img);
-        
-      })
+      });
 
-      this.listCareers = res
+      this.listCareers = res;
     });
   }
 
@@ -33,17 +36,21 @@ export class ListCareerComponent implements OnInit {
     this.currentId = id;
   }
 
-  private resizeImage(link : any){
+  private resizeImage(link: any) {
     let array = link.split('/');
-    array.splice(6,0,'w_300,h_150,c_scale/')
- 
-  
-    return array.join().replaceAll(',','/');
-  
-   }
+    array.splice(6, 0, 'w_300,h_150,c_scale/');
+
+    return array.join().replaceAll(',', '/');
+  }
 
   delete() {
-    this.careerService.delete(this.currentId).subscribe(()=>this.removeItemdOfList());
+    this.careerService.delete(this.currentId).subscribe(
+      () => {
+        this.snackbar.open('Se elimino la carrera correctamente ✅');
+        this.removeItemdOfList();
+      },
+      () => this.snackbar.open('Hubo un error al guardar la carrera ❌')
+    );
   }
 
   private removeItemdOfList() {

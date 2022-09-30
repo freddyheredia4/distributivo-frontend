@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxToastService } from 'ngx-toast-notifier';
 import { Observable } from 'rxjs';
 import { ClassRoom } from './models/classroom';
 import { ClassRoomDto } from './models/classroomDto';
@@ -12,8 +11,6 @@ import { ClassRoomDto } from './models/classroomDto';
 export class ClassroomService {
 
   constructor(private http: HttpClient,
-    private ngxToastService : NgxToastService,
-    private router : Router
   ) {}
 
   public listClassrooms: ClassRoomDto ={ 
@@ -87,19 +84,4 @@ export class ClassroomService {
 
 
 
-  addSuccess(title : string, message : string):void{
-    this.ngxToastService.onSuccess(title,message)
-  }
-
-  addInfo(title : string, message : string):void{
-    this.ngxToastService.onInfo(title,message)
-  }
-
-  addWarning(title:string, message : string):void{
-    this.ngxToastService.onWarning(title,message)
-  }
-
-  addDanger(title : string, message : string):void{
-    this.ngxToastService.onDanger(title,message)
-  }
 }

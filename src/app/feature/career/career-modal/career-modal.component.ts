@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CareerService } from '../career.service';
 import { CareerSave } from '../models/careerSave';
@@ -11,7 +12,8 @@ export class CareerModalComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
-    private careerService : CareerService
+    private careerService : CareerService, 
+    private snackbar : MatSnackBar
   ) { }
   
   public currentCareer : CareerSave = this.getClearCareer();
@@ -48,9 +50,17 @@ export class CareerModalComponent implements OnInit {
     let form : FormData = this.getFormData();
     if(this.currentCareer.id.toString().length > 0)
     this.careerService.update(form).subscribe(
-      () => this.careerService.reload())
+      () =>{ 
+        this.snackbar.open('Se edito la carrera correctamente ✅')
+        this.careerService.reload()
+      },
+      ()=> this.snackbar.open('Hubo un error al editar la carrera ❌'))
     else
-    this.careerService.save(form).subscribe((res)=>this.careerService.reload())
+    this.careerService.save(form).subscribe(  () =>{ 
+      this.snackbar.open('Se guardo la carrera correctamente ✅')
+      this.careerService.reload()
+    },
+    ()=> this.snackbar.open('Hubo un error al guardar la carrera ❌'))
   }
   
 

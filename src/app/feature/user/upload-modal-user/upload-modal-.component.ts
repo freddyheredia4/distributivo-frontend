@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DowloandExcelService } from 'src/app/excel/dowloand-excel.service';
 import { UserService } from '../user.service';
 
@@ -11,28 +12,29 @@ export class UploadModalUserComponent implements OnInit {
 
   constructor(private dowloandExcelService : DowloandExcelService,
     private UserService : UserService,
-    private uploadExcelService : DowloandExcelService) { }
+    private uploadExcelService : DowloandExcelService,
+    private snackbar : MatSnackBar) { }
   
   public files : File[] = []; 
 
   ngOnInit(): void {
   }
 
-  importUsers(input : HTMLInputElement ){
+  importUsers(input : HTMLInputElement ):any{
     
-    if(input.files?.length === 0) return this.UserService.addDanger('Error', 'Ningun archivo seleccionado')
+    if(input.files?.length === 0) return  this.snackbar.open( 'Error al hacer la importacion ​​❌')
     this.uploadExcelService.onFileSelected(input.files!, 'http://localhost:8080/api/user/import-excel')
     ?.subscribe(
-      (res)=>{
-        this.UserService.addSuccess("Correcto", "Se ha importado correctamente");
+      ()=>{
+        this.snackbar.open("Se ha importado correctamente ​✅​");
         input.value = '';
         this.UserService.getUsers('0').subscribe(
           res=> this.UserService.listUsers = res
         )
       },
-      (err)=>{
+      ()=>{
         input.value = '';
-        this.UserService.addDanger('Error', 'Error al hacer la importacion')
+        this.snackbar.open( 'Error al hacer la importacion ​​❌')
       }
     )
     

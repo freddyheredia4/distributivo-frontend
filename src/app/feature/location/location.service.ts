@@ -3,13 +3,11 @@ import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Location } from './models/location';
 import { LocationDto } from './models/locationDto';
-import { NgxToastService } from 'ngx-toast-notifier';
 @Injectable({
   providedIn: 'root',
 })
 export class LocationService {
   constructor(private http: HttpClient,
-    private ngxToastService : NgxToastService
   ) {}
 
   public listLocations: LocationDto ={
@@ -86,19 +84,4 @@ export class LocationService {
     
   } 
 
-  addSuccess(title : string, message : string):void{
-    this.ngxToastService.onSuccess(title,message)
-  }
-
-  addInfo(title : string, message : string):void{
-    this.ngxToastService.onInfo(title,message)
-  }
-
-  addWarning(title:string, message : string):void{
-    this.ngxToastService.onWarning(title,message)
-  }
-
-  addDanger(title : string, message : string):void{
-    this.ngxToastService.onDanger(title,message)
-  }
 }

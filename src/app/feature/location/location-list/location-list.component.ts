@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../location.service';
 
@@ -10,7 +11,8 @@ import { LocationService } from '../location.service';
 export class LocationListComponent implements OnInit {
 
   constructor(public locationService : LocationService,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private snackbar : MatSnackBar
 
     ) { }
 
@@ -29,9 +31,8 @@ export class LocationListComponent implements OnInit {
       res => {
       this.locationService.listLocations = res;
     },
-      err =>{ console.error(err)
-      this.locationService.addDanger('Error', 'Error al traer todas las ubicaciones');
-      }
+      () => this.snackbar.open('Hubo un error al guardar el curso ❌')
+      
       )
   }
 
@@ -39,7 +40,7 @@ export class LocationListComponent implements OnInit {
     this.locationService.removeLocation(this.currentId).subscribe( ()=>{
                   
       this.getLocations('0');
-      this.locationService.addSuccess('Success', 'Se elimino correctamente');
+      this.snackbar.open("Se ha importado correctamente ​✅​");
 
         });
           

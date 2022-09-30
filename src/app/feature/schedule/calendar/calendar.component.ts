@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Route } from '@angular/router';
 import {
   CordenatesEvent,
@@ -19,7 +20,8 @@ export class CalendarComponent implements OnInit {
   };
   constructor(
    private scheduleService : ScheduleService,
-   private route : ActivatedRoute
+   private route : ActivatedRoute,
+   private snackBar : MatSnackBar
   ) {}
 
   public currentEntity: Event = {
@@ -34,10 +36,11 @@ export class CalendarComponent implements OnInit {
       color: '',
     },
   };
+  public loading = false;
 
   ngOnInit(): void {
    if(this.events.hours.length > 0) return;
-
+   
     this.route.queryParams.subscribe((params : Params)=>{
       if(!params['fd'] || !params['td']) return
       this.getSchedule(params);
@@ -46,8 +49,13 @@ export class CalendarComponent implements OnInit {
   }
 
   getSchedule(params : Params){
+    this.loading = true;
     this.scheduleService.getSchedule(this.generateQuerys(params))
-    .subscribe(res=>this.events = res)
+    .subscribe(res=>{
+      this.events = res 
+      this.loading = false
+   },
+      ()=>this.snackBar.open('Error al traer los eventos ❌​​ '))
   }
 
 
@@ -62,9 +70,10 @@ export class CalendarComponent implements OnInit {
   public deleteEvent(){
     this.scheduleService.deleteEvent(this.currentEntity.id).subscribe(
       ()=> {
-        this.scheduleService.reload()
+        this.scheduleService.reload();
+        this.snackBar.open('Se ha eliminado el evento ✅​ ');
         document.getElementById('modal-view-event-calendar')?.click()
-      }
+      },()=>this.snackBar.open('Ha ocurrido un error al eliminar el evento ❌​​ ')
     )
   }
 

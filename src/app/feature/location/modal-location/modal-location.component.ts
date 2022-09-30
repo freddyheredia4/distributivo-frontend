@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
 import { Location } from '../models/location';
@@ -11,7 +12,8 @@ import { Location } from '../models/location';
 export class ModalLocationComponent implements OnChanges  {
    
   constructor( private locationService : LocationService,
-  private router : Router ) { }
+  private router : Router ,
+  private snackbar : MatSnackBar) { }
   
   @Input() currentId = '';
 
@@ -34,8 +36,8 @@ export class ModalLocationComponent implements OnChanges  {
         this.currentEntity = res;
       },
       (err)=>{
-        this.locationService.addDanger('Error', 'Error al buscar el usuario')
-        console.error(err);
+        this.snackbar.open('Hubo un error al guardar el curso ❌')
+        
       }
     )
 
@@ -45,14 +47,14 @@ export class ModalLocationComponent implements OnChanges  {
     if(!this.validate()){
      
       return this.locationService.saveLocation(this.currentEntity).subscribe(
-        (res)=>{
-          this.locationService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
+        ()=>{
+          this.snackbar.open("Se ha importado correctamente ​✅​");
           this.reload();
         },
-        (err)=> this.locationService.addDanger('Error', 'Error al guardar la ubicacion')
+        ()=> this.snackbar.open('Hubo un error al guardar el curso ❌')
         )
     }
-    this.locationService.addDanger('Error', 'Algunos campos no cumplen con el estandar')
+    this.snackbar.open('Hubo un error al guardar el curso ❌')
 
   }
 

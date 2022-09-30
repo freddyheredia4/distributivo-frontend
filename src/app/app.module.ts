@@ -7,7 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxToastNotifierModule } from 'ngx-toast-notifier';
+import { MaterialExampleModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,8 @@ import { NgxToastNotifierModule } from 'ngx-toast-notifier';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxToastNotifierModule.forRoot({
-      timeOut : 1500
-    })
+    MaterialExampleModule,
+   
 
   ],
   providers: [

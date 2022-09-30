@@ -51,7 +51,6 @@ export class ToolbarScheduleComponent implements OnInit {
   }
   
   handlerClickNextWeek(){
-    console.log(`${this.dates.dateFrom.toLocaleDateString()} - ${this.dates.dateTo.toLocaleDateString()}`)
     this.dates.next()
     this.dateForCLient = this.dates.getDateForClient();
     this.setParamsDay()

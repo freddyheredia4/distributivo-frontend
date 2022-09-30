@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   singIn(): void{
-    console.log(this.credential);
     this.loginService.singIn(this.credential).subscribe(
     
       (response: HttpResponse<Credenciales>) => {
@@ -34,9 +33,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/layout/dashboard'])
       
         }
-        
+        this.router.navigate(['/layout/dashboard'])
+
       }
     )
+    this.router.navigate(['/layout/dashboard'])
+
    
   }
 }

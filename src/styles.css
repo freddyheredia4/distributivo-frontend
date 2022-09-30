@@ -55,3 +55,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     -webkit-transition: .5s ease;
 
 }
+.adjust{
+  font-size-adjust:0.5;
+}
+.my-btn{
+  font-size: medium;
+  padding: 7px;
+  border-radius: 2%;
+  cursor: pointer;
+
+}
+.my-btn:hover{
+  
+  background-color: aliceblue;
+
+} 
+
+.buttonface {
+  background-color: buttonface;
+}

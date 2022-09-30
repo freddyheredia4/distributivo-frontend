@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RoleDto } from './models/roleDTO';
-import { NgxToastService } from 'ngx-toast-notifier';
 import { UserRole } from './models/userRole';
 @Injectable({
   providedIn: 'root',
 })
 export class RoleService {
   constructor(private http: HttpClient,
-    private ngxToastService : NgxToastService
   ) {}
 
   public listRoles: RoleDto ={
@@ -86,19 +84,4 @@ export class RoleService {
     
   } 
 
-  addSuccess(title : string, message : string):void{
-    this.ngxToastService.onSuccess(title,message)
-  }
-
-  addInfo(title : string, message : string):void{
-    this.ngxToastService.onInfo(title,message)
-  }
-
-  addWarning(title:string, message : string):void{
-    this.ngxToastService.onWarning(title,message)
-  }
-
-  addDanger(title : string, message : string):void{
-    this.ngxToastService.onDanger(title,message)
-  }
 }

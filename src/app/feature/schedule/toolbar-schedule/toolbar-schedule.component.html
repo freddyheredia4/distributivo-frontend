@@ -2,7 +2,8 @@
     <div class="gap-2 flex flex-wrap" >
     <app-classroom-combobox (classroomSelectEvent)="onChangeClassroom($event)" ></app-classroom-combobox>
     <app-teacher-combobox (emittierTeacher)="onChangeTeacher($event)" ></app-teacher-combobox>
-    <app-grade-combobox (changeGradeEmittier)="onChangeGrade($event)" ></app-grade-combobox>
+    <app-grade-combobox [myClass]="'p-2 text-gray-600 outline-none border-none active:outline-none focus:outline-none'" (changeGradeEmittier)="onChangeGrade($event)" ></app-grade-combobox>
+    <div>
     <select class="p-2 text-gray-600 outline-none border-none active:outline-none focus:outline-none" name="" id="">
         <option value="">LECTIVO</option>
         <option value="">Curso1</option>
@@ -10,10 +11,12 @@
         <option value="">Curso3</option>
     </select>
 </div>
-<div class="gap-2 flex jus flex-wrap" >
-   <label class="btn btn-sm">Solicitudes</label>
-   <label class="btn btn-sm text-white btn-warning">Imprimir</label>
-   <app-upload-modal-Schedule></app-upload-modal-Schedule>
+</div>
+<div class="gap-2 flex flex-wrap" >
+   <label class="buttonface text-center hover:bg-gray-200 p-2 text-gray-600 rounded cursor-pointer ">SOLICITUDES</label>
+   <label class="buttonface text-center hover:bg-gray-200 p-2 text-gray-600 rounded cursor-pointer">IMPRIMIR</label>
+   <label class="buttonface text-center hover:bg-gray-200 p-2 text-gray-600 rounded cursor-pointer" for="import-excel">EXPORTAR</label>
+   
 </div>
 </div>
 <div class="flex text-xl px-4 flex-wrap justify-between " >
@@ -32,3 +35,4 @@
         </div>
     </div>
 </div>
+<app-upload-modal-Schedule></app-upload-modal-Schedule>

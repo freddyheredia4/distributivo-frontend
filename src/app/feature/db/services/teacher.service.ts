@@ -52,22 +52,6 @@ export class TeacherService {
     
     })
   }
-/*
-  addSuccess(title : string, message : string):void{
-    this.ngxToastService.onSuccess(title,message)
-  }
 
-  addInfo(title : string, message : string):void{
-    this.ngxToastService.onInfo(title,message)
-  }
-
-  addWarning(title:string, message : string):void{
-    this.ngxToastService.onWarning(title,message)
-  }
-
-  addDanger(title : string, message : string):void{
-    this.ngxToastService.onDanger(title,message)
-  }
-*/
 
 }

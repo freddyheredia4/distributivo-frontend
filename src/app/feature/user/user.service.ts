@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
 import { UserDto } from './models/userDto';
-import { NgxToastService } from 'ngx-toast-notifier';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   constructor(private http: HttpClient,
-    private ngxToastService : NgxToastService
   ) {}
 
   public listUsers: UserDto ={
@@ -86,19 +84,4 @@ export class UserService {
     
   } 
 
-  addSuccess(title : string, message : string):void{
-    this.ngxToastService.onSuccess(title,message)
-  }
-
-  addInfo(title : string, message : string):void{
-    this.ngxToastService.onInfo(title,message)
-  }
-
-  addWarning(title:string, message : string):void{
-    this.ngxToastService.onWarning(title,message)
-  }
-
-  addDanger(title : string, message : string):void{
-    this.ngxToastService.onDanger(title,message)
-  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DowloandExcelService } from 'src/app/excel/dowloand-excel.service';
 import { GradeService } from '../grade.service';
 
@@ -7,30 +8,29 @@ import { GradeService } from '../grade.service';
   templateUrl: './upload-modal-grade.component.html',
   styleUrls: []
 })
-export class UploadModalGradeComponent implements OnInit {
+export class UploadModalGradeComponent  {
 
   constructor(private dowloandExcelService : DowloandExcelService,
     private gradeService : GradeService,
-    private uploadExcelService : DowloandExcelService) { }
+    private uploadExcelService : DowloandExcelService,
+    private snackbar : MatSnackBar) { }
   
   public files : File[] = []; 
 
-  ngOnInit(): void {
-  }
 
   importGrades(files : FileList | null ){
     
-    if(files?.length === 0) return this.gradeService.addDanger('Error', 'Ningun archivo seleccionado')
+    if(files?.length === 0) this.snackbar.open('Hubo un error al guardar el curso ❌')
     this.uploadExcelService.onFileSelected(files!, 'http://localhost:8080/api/grade/import-excel')
     ?.subscribe(
       (res)=>{
-        this.gradeService.addSuccess("Correcto", "Se ha importado correctamente");
+        this.snackbar.open("Se ha importado correctamente ​✅​");
         this.gradeService.searchGradesByCareer().subscribe(
           res =>this.gradeService.listGrades = res
         )
       },
       (err)=>{
-        this.gradeService.addDanger('Error', 'Error al hacer la importacion')
+        this.snackbar.open('Hubo un error al guardar el curso ❌')
       }
     )
     

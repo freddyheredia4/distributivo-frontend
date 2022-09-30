@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ClassroomService } from '../classroom.service';
 import { ClassRoom } from '../models/classroom';
@@ -11,7 +12,8 @@ import { ClassRoom } from '../models/classroom';
 export class ModalClassroomComponent implements OnChanges{
    
   constructor( private classroomService : ClassroomService,
-    private router : Router ) { }
+    private router : Router,
+    private snackbar : MatSnackBar ) { }
 
     @Input() currentId = '';
     ngOnChanges(changes: SimpleChanges) {
@@ -36,10 +38,8 @@ export class ModalClassroomComponent implements OnChanges{
       (res)=>{
         this.currentEntity = res;
       },
-      (err)=>{
-        this.classroomService.addDanger('Error', 'Error al buscar el usuario')
-        console.error(err);
-      }
+      ()=> this.snackbar.open('Hubo un error al guardar el curso ❌')
+      
     )
 
   }
@@ -53,29 +53,26 @@ export class ModalClassroomComponent implements OnChanges{
   }
 
   private save() : any {
-    //if(!this.validate()){
      
       return this.classroomService.saveCLassroom(this.currentEntity).subscribe(
         (res)=>{
-          this.classroomService.addSuccess('Correcto', 'Se guardo correctamente la ubicacion');
+          this.snackbar.open("Se ha importado correctamente ​✅​");
           this.reload();
         },
-        (err)=> this.classroomService.addDanger('Error', 'Error al guardar la ubicacion')
+        (err)=> this.snackbar.open('Hubo un error al guardar el curso ❌')
         )
-   // }
-    //this.classroomService.addDanger('Error', 'Algunos campos no cumplen con el estandar')
+
 
   }
 
   private update(){
      return this.classroomService.updateCLassroom(this.currentEntity).subscribe(
-      (res)=>{
-        this.classroomService.addSuccess('Correcto', 'Se edito correctamente la ubicacion');
+      (r)=>{
+        this.snackbar.open("Se ha importado correctamente ​✅​");
         this.reload();
       },
-      (err)=> this.classroomService.addDanger('Error', 'Error al editar la ubicacion')
+      ()=> this.snackbar.open('Hubo un error al guardar el curso ❌')
       )
- // }
   }
 
   removeCurrentEntity(){

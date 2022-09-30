@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -10,7 +11,8 @@ import { UserService } from '../user.service';
 export class UserListComponent implements OnInit {
 
   constructor(public userService : UserService,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private snackbar : MatSnackBar
 
     ) { }
 
@@ -29,9 +31,8 @@ export class UserListComponent implements OnInit {
       res => {
       this.userService.listUsers = res;
     },
-      err =>{ console.error(err)
-      this.userService.addDanger('Error', 'Error al traer todas las ubicaciones');
-      }
+      () =>this.snackbar.open( 'Error al hacer la importacion ​​❌')
+      
       )
   }
 
@@ -39,7 +40,7 @@ export class UserListComponent implements OnInit {
     this.userService.removeUser(this.currentId).subscribe( ()=>{
                   
       this.getUsers('0');
-      this.userService.addSuccess('Success', 'Se elimino correctamente');
+      this.snackbar.open("Se ha importado correctamente ​✅​");
 
         });
           

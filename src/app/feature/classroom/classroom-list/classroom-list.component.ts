@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassroomService } from '../classroom.service';
-//import { ClassRoom } from '../models/classroom';
 
 @Component({
   selector: 'app-classroom-list',
@@ -11,7 +11,8 @@ import { ClassroomService } from '../classroom.service';
 export class ClassroomListComponent implements OnInit {
 
   constructor(public classRoomService : ClassroomService,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private snackbar : MatSnackBar
 
     ) { }
 
@@ -30,9 +31,7 @@ export class ClassroomListComponent implements OnInit {
         res => {
         this.classRoomService.listClassrooms = res;
       },
-        err =>{ console.error(err)
-        this.classRoomService.addDanger('Error', 'Error al traer todas las ubicaciones');
-        }
+      () => this.snackbar.open("Se ha importado correctamente ​✅​")
         )
     }
   
@@ -41,7 +40,7 @@ export class ClassroomListComponent implements OnInit {
         ()=>{
                   
           this.getclassRooms('0');
-          this.classRoomService.addSuccess('Success', 'Se elimino correctamente');
+          this.snackbar.open("Se ha importado correctamente ​✅​");
 
         }
       );

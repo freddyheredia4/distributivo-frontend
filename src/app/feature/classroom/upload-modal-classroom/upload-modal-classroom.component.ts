@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DowloandExcelService } from 'src/app/excel/dowloand-excel.service';
 import { ClassroomService } from '../classroom.service';
 
@@ -7,30 +8,30 @@ import { ClassroomService } from '../classroom.service';
   templateUrl: './upload-modal-classroom.component.html',
   styleUrls: []
 })
-export class UploadModalClassroomComponent implements OnInit {
+export class UploadModalClassroomComponent {
 
   constructor(private dowloandExcelService : DowloandExcelService,
     private classroomService : ClassroomService,
-    private uploadExcelService : DowloandExcelService) { }
+    private uploadExcelService : DowloandExcelService,
+    private snackbar : MatSnackBar) { }
   
   public files : File[] = []; 
 
-  ngOnInit(): void {
-  }
 
-  importLocations(files : FileList | null ){
+
+  importLocations(files : FileList | null ):any {
     
-    if(files?.length === 0) return this.classroomService.addDanger('Error', 'Ningun archivo seleccionado')
+    if(files?.length === 0) return this.snackbar.open('Hubo un error al guardar el curso ❌')
     this.uploadExcelService.onFileSelected(files!, 'http://localhost:8080/api/classroom/import-excel')
     ?.subscribe(
-      (res)=>{
-        this.classroomService.addSuccess("Correcto", "Se ha importado correctamente");
+      (r)=>{
+        this.snackbar.open("Se ha importado correctamente ​✅​");
         this.classroomService.getClassrooms('0').subscribe(
           res =>this.classroomService.listClassrooms = res
         )
       },
-      (err)=>{
-        this.classroomService.addDanger('Error', 'Error al hacer la importacion')
+      ()=>{
+        this.snackbar.open('Hubo un error al guardar el curso ❌')
       }
     )
     

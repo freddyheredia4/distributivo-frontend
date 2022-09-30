@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { GradeService } from '../grade.service';
 import { Grade } from '../models/grade';
 
@@ -22,16 +23,20 @@ export class CardGradeComponent implements OnInit {
   };
 
   constructor(
-    private gradeService : GradeService
+    private gradeService : GradeService,
+    private snackbar : MatSnackBar
   ) { }
 
   ngOnInit(): void {
   }
 
   delete(id : string){
-    this.gradeService.removeGrade(id).subscribe((
-
-    )=>this.gradeService.reload())
+    this.gradeService.removeGrade(id).subscribe(     () => {
+      this.snackbar.open('Se elimino el curso correctamente ✅');
+      this.gradeService.reload();
+    },
+    () => this.snackbar.open('Hubo un error al guardar el curso ❌')
+    )
   }
 
   
