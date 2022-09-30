@@ -1,7 +1,9 @@
 export interface Grade {
     id : number,
-    level: string, 
+    name: string,
     working_day : string,
-    parallel : string,
-    name : string
+    level: number, 
+    parallel : number,
+    status: boolean, 
+    career : number
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Teacher } from '../../../feature/teacher/models/teacher';
 import { TeacherService } from '../../../feature/teacher/teacher.service';
 
@@ -9,7 +9,8 @@ import { TeacherService } from '../../../feature/teacher/teacher.service';
 })
 export class TeacherComboboxComponent implements OnInit {
   
-  @Output() emittierTeacher = new EventEmitter<string>()
+  @Output() emittierTeacher = new EventEmitter<string>();
+  @Input() myClass= '';
 
   constructor(
     private teacherService : TeacherService

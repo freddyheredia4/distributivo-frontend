@@ -5,9 +5,9 @@ import { ComboboxCareerComponent } from './combobox-career/combobox-career.compo
 
 
 @NgModule({
- imports:      [ CommonModule ],
- declarations: [ ComboboxCareerComponent  ],
- exports:      [ ComboboxCareerComponent 
-                  ]
+    imports: [CommonModule],
+    declarations: [ComboboxCareerComponent],
+    exports: [ComboboxCareerComponent
+    ]
 })
 export class SharedCareerModule { }

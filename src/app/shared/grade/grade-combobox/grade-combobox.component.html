@@ -1,6 +1,6 @@
-<select #grade (click)="handleChangeGrade(grade.value)" [ngClass]="myClass"  name="" id="">
-    <option value="">CURSO</option>
-    <option *ngFor="let grade of grades" [value]="grade.id" >
+<select #grade (click)="handleChangeGrade(grade.value)" [ngClass]="myClass">
+    <option selected disabled>Curso</option>
+    <option [value]="grade.id" *ngFor="let grade of grades">
         {{grade.name}}
     </option>
 </select>

@@ -30,8 +30,8 @@ export class TeacherDtoService {
     return this.http.post<Distributive>(this.url+"/save", distributive, this.httpOPtions)
   }
 
-  public findByTeacherId( id : number ):Observable<TeacherDto>{
-    return this.http.get<TeacherDto>(this.url+"/findByIdTeacher/"+id, this.httpOPtions)
+  public findByTeacherId( id : number ):Observable<TeacherDto[]>{
+    return this.http.get<TeacherDto[]>(this.url+"/findByIdTeacher/"+id, this.httpOPtions)
   }
 
   public findByIdDistributive(id:number):Observable<TeacherDto>{
