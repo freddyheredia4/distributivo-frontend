@@ -12,6 +12,9 @@ import { DistibutivoDocenteDetalleComponent } from './distibutivo-docente-detall
 import { DistributivoModalAddComponent } from './distributivo-modal-add/distributivo-modal-add.component'; 
 import { SharedCareerModule } from 'src/app/shared/career/career.shared.module';
 import { SharedGradeModule } from 'src/app/shared/grade/grade.shared.module';
+import { SharedTeacherModule } from 'src/app/shared/teacher/teacher.shared.module';
+import { SharedSchoolPeriodModule } from 'src/app/shared/school-period/school-period.shared.module';
+import { SharedCourseModule } from 'src/app/shared/course/course.module';
 
 const routes : Route[] = [
   
@@ -34,7 +37,10 @@ const routes : Route[] = [
     CommonModule,
     FormsModule,
     SharedCareerModule,
-    SharedGradeModule
+    SharedGradeModule,
+    SharedTeacherModule,
+    SharedSchoolPeriodModule,
+    SharedCourseModule
 
   ],
   providers: [],

@@ -7,4 +7,4 @@ import { GradeComboboxComponent } from './grade-combobox/grade-combobox.componen
   declarations: [GradeComboboxComponent],
   exports: [GradeComboboxComponent],
 })
-export class SharedGradeModule {}
+export class SharedGradeModule { }

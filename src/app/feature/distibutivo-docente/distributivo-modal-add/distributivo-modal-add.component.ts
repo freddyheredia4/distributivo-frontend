@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Distributive } from '../../db/models/distributive';
 import { TeacherDtoService } from '../../db/services/teacher-dto.service';
 
@@ -14,7 +14,8 @@ export class DistributivoModalAddComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+ 
+  
   currentEntity: Distributive = {
     id: 0,
     schoolTime: 0,
@@ -25,19 +26,28 @@ export class DistributivoModalAddComponent implements OnInit {
   }
 
   public handlerChangeCareer(id : string){
-    this.currentEntity.career = parseInt(id)
-
+    this.currentEntity.career = parseInt(id);
+    console.log(id);
   }
 
   public handlerChangeGrade(id : string){
     this.currentEntity.grade = parseInt(id);
-
+    console.log(id);
   }
-
 
   public handlerChangeteacher(id : string){
     this.currentEntity.teacher = parseInt(id);
+    console.log(id);
+  }
 
+  public handlerChangePeriodo(id : string){
+    this.currentEntity.schoolTime = parseInt(id);
+    console.log(id)
+  }
+
+  public handlerChangeCouse( id : string ){
+    this.currentEntity.course = parseInt(id);
+    console.log(id);
   }
 
   public save(): void {
@@ -50,8 +60,9 @@ export class DistributivoModalAddComponent implements OnInit {
           course: 0,
           grade: 0,
           career: 0
-        }
+        };
       }
     )
+    console.log("Los datos se han enviado correctamente")
   }
 }

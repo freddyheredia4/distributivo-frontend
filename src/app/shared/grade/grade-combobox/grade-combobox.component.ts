@@ -12,18 +12,17 @@ export class GradeComboboxComponent implements OnInit {
   constructor(
     private gradeService : GradeService
   ) { }
-  @Output() changeGradeEmittier = new EventEmitter<string>()
+  @Output() changeGradeEmittier = new EventEmitter<string>();
   public grades : Grade[] = []; 
-  
+  @Input() gradeId : string = '';
   @Input() myClass = '';
 
   ngOnInit(): void {
     this.getGrades();
   }
 
-  handleChangeGrade(id : string){
+  public handleChangeGrade(id : string){
     this.changeGradeEmittier.emit(id);
-
   }
 
   getGrades(){

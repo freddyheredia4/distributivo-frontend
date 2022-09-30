@@ -34,27 +34,27 @@ export class DistibutivoDocenteListComponent implements OnInit {
     )
   }
 
-  currentEntity: TeacherDto = {
+  currentEntity : TeacherDto= {
     id: 0,
     teacherNombre: "",
-    teacherApellido: "",
-    teacherCedula: "",
-    gradeid: 0,
-    perioodid: 0,
-    subjectid: 0,
     teacherid: 0,
+    teacherCedula: '',
+    teacherApellido: '',
+    gradeid: 0,
     cursoName: '',
+    subjectid: 0,
     asignaturaName: '',
     asignaturaCode: '',
+    perioodid: 0,
     periodName: '',
     careeid: 0,
     careerName: '',
     careerCode: ''
   }
-
+  
   public findById(id: number): void {
     this.teacherDtoService.findByTeacherId(id).subscribe(
-      (response) => this.currentEntity = response
+      (response) => this.teacherDtoList = response
     )
   }
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { GradeService } from '../../../feature/grade/grade.service';
+import { CareerService } from 'src/app/feature/career/career.service';
 import { Career } from '../../../feature/grade/models/career';
 
 @Component({
@@ -10,10 +10,10 @@ import { Career } from '../../../feature/grade/models/career';
 export class ComboboxCareerComponent implements OnInit {
 
   constructor(
-    private gradeService : GradeService,
+    private carrerService : CareerService,
   ) { }
 
-  @Output() careerSelectEvent  = new EventEmitter<string>()
+  @Output() careerSelectEvent  = new EventEmitter<string>();
   @Input() careerId : string =  '';
   @Input() myClass = '';
    
@@ -23,16 +23,14 @@ export class ComboboxCareerComponent implements OnInit {
   }
 
   getCareers(){
-    this.gradeService.getCareers().subscribe(
+    this.carrerService.findAll().subscribe(
       (res)=>this.careers= res
     )
 
   }
 
   addCareerEmittier(id : string){
-    
     this.careerSelectEvent.emit(id);
-
   }
 
 }
