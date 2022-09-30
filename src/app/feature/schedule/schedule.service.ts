@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, QueryParamsHandling, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SaveEventDTO } from './models/saveEventDTO';
 import { ScheduleEvents } from './models/scheduleData';
@@ -17,7 +17,7 @@ export class ScheduleService {
 
 
   ) { }
-
+  public mustReload = true;
   private reBool : boolean = true;
 
   private initialUrlSchedule = 'http://localhost:8080/api/schedule';
@@ -45,21 +45,25 @@ export class ScheduleService {
 
   }
 
-  public addQueryParam(params : Params){
-    this.router.navigate(["/layout/schedule"], {
+  public addQueryParam(params : Params,reloadCalendar : boolean = true ){
+
+    this.router.navigate(
+      [], 
+    {
      relativeTo: this.route,
      queryParams: params,
-     queryParamsHandling: 'merge',
-    
-   //  skipLocationChange: true
+     queryParamsHandling : 'merge'
    
    });
+
+   this.mustReload = reloadCalendar;
 
    
 }
 public reload(){
   this.reBool = !this.reBool
   this.addQueryParam({r : this.reBool})
+  this.mustReload = true;
 }
 
 

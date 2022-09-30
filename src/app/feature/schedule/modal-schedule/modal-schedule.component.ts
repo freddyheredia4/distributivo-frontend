@@ -31,6 +31,7 @@ export class ModalScheduleComponent implements OnInit {
   }
 
   public saveOrSaveRange(){
+    console.log(this.currentEntity)
     if(this.verifyIfIsRange())this.saveRange()
     else this.save();
   

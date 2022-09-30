@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, QueryParamsHandling, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Career } from './models/career';
 import { CareerSave } from './models/careerSave';
@@ -51,12 +51,12 @@ export class CareerService {
       this.router.navigate(['/layout/career/']);
   }); 
   }
-  public addParamsnoreload(params : Params, route : ActivatedRoute){
+  public addParamsnoreload(params : Params, route : ActivatedRoute, queryParamsHandling : QueryParamsHandling = 'merge'){
     this.router.navigate([],
       {
         relativeTo : route,
         queryParams : params,
-        queryParamsHandling : 'merge'
+        queryParamsHandling,
       })
 
   }

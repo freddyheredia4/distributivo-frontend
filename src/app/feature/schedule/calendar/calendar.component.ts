@@ -38,15 +38,22 @@ export class CalendarComponent implements OnInit {
   };
   public loading = false;
 
+
   ngOnInit(): void {
    if(this.events.hours.length > 0) return;
-   
-    this.route.queryParams.subscribe((params : Params)=>{
-      if(!params['fd'] || !params['td']) return
+
+     this.route.queryParams.subscribe((params : Params)=>{
+      
+      if(this.verifyMustReload(params)) return
       this.getSchedule(params);
     });
   
   }
+
+  private verifyMustReload(params : Params){
+    return (!params['fd'] || !params['td'] || !this.scheduleService.mustReload)
+  }
+  
 
   getSchedule(params : Params){
     this.loading = true;
@@ -73,7 +80,8 @@ export class CalendarComponent implements OnInit {
         this.scheduleService.reload();
         this.snackBar.open('Se ha eliminado el evento ✅​ ');
         document.getElementById('modal-view-event-calendar')?.click()
-      },()=>this.snackBar.open('Ha ocurrido un error al eliminar el evento ❌​​ ')
+      },
+      ()=>this.snackBar.open('Ha ocurrido un error al eliminar el evento ❌​​ ')
     )
   }
 
@@ -92,13 +100,15 @@ export class CalendarComponent implements OnInit {
       this.scheduleService.addQueryParam({
         hour : item.hour,
         day : item.day
-      });
+      }, false);
+
       document.getElementById("modal-event-calendar")?.click()
     }
   }
 
   private generateQuerys(params : Params) {
-    const querys = `?room=${params['room'] || ''}&grade=${params['grade'] || ''}&td=${params['td'] || ''}&fd=${params['fd'] || ''}&teacher=${params['teacher'] || ''}`
+    const querys = `?room=${params['room'] || ''}&grade=${params['grade'] || ''}
+    &td=${params['td'] || ''}&fd=${params['fd'] || ''}&teacher=${params['teacher'] || ''}`
     return querys
   };
 

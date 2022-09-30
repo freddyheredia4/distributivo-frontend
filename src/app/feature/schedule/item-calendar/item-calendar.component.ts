@@ -6,7 +6,7 @@ import { CordenatesEvent, Event } from '../models/scheduleData';
   templateUrl: './item-calendar.component.html',
   styleUrls: []
 })
-export class ItemCalendarComponent implements OnInit {
+export class ItemCalendarComponent {
 
   constructor() { }
   @Input() event : Event = {
@@ -36,8 +36,7 @@ export class ItemCalendarComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
-  }
+
 
 
 }
